@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GayTimer"
+             xmlns:testApp="clr-namespace:TestApp;assembly=TestApp"
+             x:Class="GayTimer.MainPage">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <testApp:PlayerView Grid.Row="0" Grid.Column="0" BindingContext="{Binding Player1}" BackgroundColor="Orange" />
+        <testApp:PlayerView Grid.Row="0" Grid.Column="1" BindingContext="{Binding Player2}" BackgroundColor="ForestGreen"/>
+        <testApp:PlayerView Grid.Row="1" Grid.Column="0" BindingContext="{Binding Player3}" BackgroundColor="MediumPurple"/>
+        <testApp:PlayerView Grid.Row="1" Grid.Column="1" BindingContext="{Binding Player4}" BackgroundColor="DodgerBlue"/>
+    </Grid>
+</ContentPage>

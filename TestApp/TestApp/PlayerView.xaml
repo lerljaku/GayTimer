@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:testApp="clr-namespace:TestApp;assembly=TestApp"
+             x:Class="TestApp.PlayerView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <testApp:IsRunningToColorConverter x:Key="IsRunningToColorConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+               Grid.ColumnSpan="2"
+               Text="{Binding Health}" FontSize="72" TextColor="AliceBlue" />
+
+        <Button Pressed="Button_OnPressed" Released="Button_OnReleased" BackgroundColor="CadetBlue" Opacity="0"
+                Grid.Column="0" Command="{Binding DecrementHealthCommand}" />
+        <Button Pressed="Button_OnPressed" Released="Button_OnReleased" BackgroundColor="CadetBlue" Opacity="0"
+                Grid.Column="1" Command="{Binding IncrementHealthCommand}" />
+
+        <Button Grid.ColumnSpan="2" Text="{Binding TimeSpent, StringFormat='{}{0:mm\\:ss}'}" Command="{Binding ToggleTimerCommand}" VerticalOptions="End" 
+                HorizontalOptions="End" FontSize="32" BackgroundColor="Transparent" 
+                TextColor="{Binding IsRunning, Converter={StaticResource IsRunningToColorConverter}}" />
+    </Grid>
+</ContentView>
