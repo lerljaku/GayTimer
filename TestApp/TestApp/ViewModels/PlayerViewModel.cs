@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Input;
+using GayTimer;
 
-namespace GayTimer
+namespace GayTimer.ViewModels
 {
-    public delegate void TimerToggledEvent(Player player);
+    public delegate void TimerToggledEvent(PlayerViewModel player);
 
-    public class Player : ScreenBase
+    public class PlayerViewModel : ScreenBase
     {
         private const int Miliseconds = 1000;
         private readonly Timer m_timer;
         private bool m_isRunning;
 
-        public Player()
+        public PlayerViewModel()
         {
             m_timer = new Timer(IncrementTime);
 

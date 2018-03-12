@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TestApp
+namespace GayTimer.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PlayerView 
