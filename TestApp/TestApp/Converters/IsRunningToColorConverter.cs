@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xamarin.Forms;
 
-namespace TestApp
+namespace GayTimer.Converters
 {
     public class IsRunningToColorConverter : IValueConverter
     {

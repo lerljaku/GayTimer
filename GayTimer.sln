@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Android", "TestApp\TestApp.Android\TestApp.Android.csproj", "{B763DD88-65AF-423E-AB72-4F36789DEA30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GayTimer.Android", "TestApp\TestApp.Android\GayTimer.Android.csproj", "{B763DD88-65AF-423E-AB72-4F36789DEA30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp\TestApp.csproj", "{3C5F4AF9-B886-4E8D-99DA-09D71785BA20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GayTimer", "TestApp\TestApp\GayTimer.csproj", "{3C5F4AF9-B886-4E8D-99DA-09D71785BA20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GayTimer.Service", "GayTimerService\GayTimer.Service.csproj", "{A076DD2A-9295-41C9-A930-A69CAA363DE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GayTimer.Common", "GayTimer.Common\GayTimer.Common.csproj", "{B3AF2EC5-40A8-4618-8803-C9DFD6E47381}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,14 @@ Global
 		{3C5F4AF9-B886-4E8D-99DA-09D71785BA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C5F4AF9-B886-4E8D-99DA-09D71785BA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C5F4AF9-B886-4E8D-99DA-09D71785BA20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A076DD2A-9295-41C9-A930-A69CAA363DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A076DD2A-9295-41C9-A930-A69CAA363DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A076DD2A-9295-41C9-A930-A69CAA363DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A076DD2A-9295-41C9-A930-A69CAA363DE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AF2EC5-40A8-4618-8803-C9DFD6E47381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AF2EC5-40A8-4618-8803-C9DFD6E47381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AF2EC5-40A8-4618-8803-C9DFD6E47381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AF2EC5-40A8-4618-8803-C9DFD6E47381}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

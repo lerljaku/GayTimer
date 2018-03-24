@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:testApp="clr-namespace:TestApp;assembly=TestApp"
-             x:Class="TestApp.PlayerView">
+             xmlns:gayApp="clr-namespace:GayTimer.Converters;assembly=GayTimer"
+             x:Class="GayTimer.Views.PlayerView">
     <ContentView.Resources>
         <ResourceDictionary>
-            <testApp:IsRunningToColorConverter x:Key="IsRunningToColorConverter" />
+            <gayApp:IsRunningToColorConverter x:Key="IsRunningToColorConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <Grid>
@@ -23,7 +23,7 @@
         <Button Pressed="Button_OnPressed" Released="Button_OnReleased" BackgroundColor="CadetBlue" Opacity="0"
                 Grid.Column="1" Command="{Binding IncrementHealthCommand}" />
 
-        <Button Grid.ColumnSpan="2" Text="{Binding TimeSpent, StringFormat='{}{0:mm\\:ss}'}" Command="{Binding ToggleTimerCommand}" VerticalOptions="End" 
+        <Button Grid.ColumnSpan="2" Text="{Binding TimeSpent, StringFormat='{}{0:mm\\:ss}'}" Command="{Binding ToggleTimerCommand}" VerticalOptions="End"
                 HorizontalOptions="End" FontSize="32" BackgroundColor="Transparent" 
                 TextColor="{Binding IsRunning, Converter={StaticResource IsRunningToColorConverter}}" />
     </Grid>

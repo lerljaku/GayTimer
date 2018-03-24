@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -79,14 +79,11 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\TestApp\TestApp.csproj">
-      <Project>{C90D5378-6894-4AE8-9893-D68D41D7CC3E}</Project>
-      <Name>TestApp</Name>
+    <ProjectReference Include="..\TestApp\GayTimer.csproj">
+      <Project>{3C5F4AF9-B886-4E8D-99DA-09D71785BA20}</Project>
+      <Name>GayTimer</Name>
     </ProjectReference>
   </ItemGroup>
-
-
- <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

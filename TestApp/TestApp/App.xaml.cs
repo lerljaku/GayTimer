@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GayTimer;
-using Xamarin.Forms;
+﻿using GayTimer.MenuItems;
 
-namespace TestApp
+namespace GayTimer
 {
-	public partial class App : Application
+	public partial class App 
 	{
 		public App ()
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+			MainPage = new MainMasterDetailPage();
 		}
 
 		protected override void OnStart ()
