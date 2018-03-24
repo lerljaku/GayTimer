@@ -49,6 +49,18 @@ CREATE TABLE IF NOT EXISTS `Deck` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='deck is an entity that represents a MTG card deck with which a game is played by each Gay attending that game';
 
 -- Data exporting was unselected.
+-- Dumping structure for table Gaycardsdb.GameFormat
+CREATE TABLE IF NOT EXISTS `GameFormat` (
+  `Id` tinyint(3) unsigned NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Description` varchar(250) NOT NULL,
+  `PlayersMin` tinyint(3) unsigned NOT NULL DEFAULT 2,
+  `PlayersMax` tinyint(3) unsigned DEFAULT NULL,
+  `IsSingleton` tinyint(1) unsigned NOT NULL DEFAULT 1,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Defines a MTG game format that each game is played by. It defines how many players can participate, what is the starting life total of each player, how many cards each deck needs to have (at least) and whether it is a singleton format.';
+
+-- Data exporting was unselected.
 -- Dumping structure for table Gaycardsdb.game
 CREATE TABLE IF NOT EXISTS `Game` (
   `Id` mediumint(8) unsigned NOT NULL,
@@ -60,18 +72,6 @@ CREATE TABLE IF NOT EXISTS `Game` (
   KEY `FK_Format` (`FormatId`),
   CONSTRAINT `FK_Format` FOREIGN KEY (`FormatId`) REFERENCES `GameFormat` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='game is an entity representing a single MTG card game played by Gays (from a specific playgroup) each with a single deck';
-
--- Data exporting was unselected.
--- Dumping structure for table Gaycardsdb.GameFormat
-CREATE TABLE IF NOT EXISTS `GameFormat` (
-  `Id` tinyint(3) unsigned NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `Description` varchar(250) NOT NULL,
-  `PlayersMin` tinyint(3) unsigned NOT NULL DEFAULT 2,
-  `PlayersMax` tinyint(3) unsigned DEFAULT NULL,
-  `IsSingleton` tinyint(1) unsigned NOT NULL DEFAULT 1,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Defines a MTG game format that each game is played by. It defines how many players can participate, what is the starting life total of each player, how many cards each deck needs to have (at least) and whether it is a singleton format.';
 
 -- Data exporting was unselected.
 -- Dumping structure for table Gaycardsdb.gametimespent
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `GayToPlaygroup` (
   KEY `FK_GayId` (`GayId`),
   KEY `FK_PlaygroupId` (`PlaygroupId`),
   CONSTRAINT `FK_GayId` FOREIGN KEY (`GayId`) REFERENCES `Gay` (`Id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_PlaygroupId` FOREIGN KEY (`PlaygroupId`) REFERENCES `playgroup` (`Id`) ON DELETE CASCADE
+  CONSTRAINT `FK_PlaygroupId` FOREIGN KEY (`PlaygroupId`) REFERENCES `Playgroup` (`Id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Relational table that stores membership of indivIdual Gay actors within specific playgroups (N:N)';
 
 -- Data exporting was unselected.
