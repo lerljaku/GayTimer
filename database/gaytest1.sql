@@ -5,13 +5,6 @@
 -- HeIdiSQL Version:             9.4.0.5125
 -- --------------------------------------------------------
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-
-
 -- Dumping database structure for Gaycardsdb
 CREATE DATABASE IF NOT EXISTS `GayRate` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `GayRate`;
@@ -19,7 +12,7 @@ USE `GayRate`;
 -- Data exporting was unselected.
 -- Dumping structure for table Gaycardsdb.playgroup
 CREATE TABLE IF NOT EXISTS `Playgroup` (
-  `Id` tinyint(3) unsigned NOT NULL,
+  `Id` tinyint(3) unsigned AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
   `PasswordHash` varchar(50) NOT NULL,
   `PasswordSalt` varchar(50) NOT NULL,
@@ -29,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `Playgroup` (
 -- Data exporting was unselected.
 -- Dumping structure for table Gaycardsdb.Gay
 CREATE TABLE IF NOT EXISTS `Gay` (
-  `Id` smallint(5) unsigned NOT NULL,
+  `Id` smallint(5) unsigned AUTO_INCREMENT,
   `FirstName` varchar(50) NOT NULL,
   `LastName` varchar(50) NOT NULL,
   `Nick` varchar(50) NOT NULL,
@@ -39,9 +32,9 @@ CREATE TABLE IF NOT EXISTS `Gay` (
 
 -- Dumping structure for table Gaycardsdb.deck
 CREATE TABLE IF NOT EXISTS `Deck` (
-  `Id` smallint(6) unsigned NOT NULL,
+  `Id` smallint(6) unsigned AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
-  `Description` varchar(255) DEFAULT NULL,
+  `Description` varchar(255) NOT NULL,
   `OwnerId` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `FK_Owner` (`OwnerId`),
@@ -51,11 +44,11 @@ CREATE TABLE IF NOT EXISTS `Deck` (
 -- Data exporting was unselected.
 -- Dumping structure for table Gaycardsdb.GameFormat
 CREATE TABLE IF NOT EXISTS `GameFormat` (
-  `Id` tinyint(3) unsigned NOT NULL,
+  `Id` tinyint(3) unsigned AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
   `Description` varchar(250) NOT NULL,
   `PlayersMin` tinyint(3) unsigned NOT NULL DEFAULT 2,
-  `PlayersMax` tinyint(3) unsigned DEFAULT NULL,
+  `PlayersMax` tinyint(3) unsigned NOT NULL,
   `IsSingleton` tinyint(1) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Defines a MTG game format that each game is played by. It defines how many players can participate, what is the starting life total of each player, how many cards each deck needs to have (at least) and whether it is a singleton format.';
@@ -63,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `GameFormat` (
 -- Data exporting was unselected.
 -- Dumping structure for table Gaycardsdb.game
 CREATE TABLE IF NOT EXISTS `Game` (
-  `Id` mediumint(8) unsigned NOT NULL,
+  `Id` mediumint(8) unsigned AUTO_INCREMENT,
   `FormatId` tinyint(3) unsigned NULL,
   `StartedAt` datetime NOT NULL,
   `FinishedAt` datetime NOT NULL,
@@ -111,8 +104,3 @@ CREATE TABLE IF NOT EXISTS `GayToPlaygroup` (
   CONSTRAINT `FK_GayId` FOREIGN KEY (`GayId`) REFERENCES `Gay` (`Id`) ON DELETE CASCADE,
   CONSTRAINT `FK_PlaygroupId` FOREIGN KEY (`PlaygroupId`) REFERENCES `Playgroup` (`Id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Relational table that stores membership of indivIdual Gay actors within specific playgroups (N:N)';
-
--- Data exporting was unselected.
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

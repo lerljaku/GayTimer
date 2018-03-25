@@ -1,5 +1,5 @@
 <?php
-class Game{
+class Gay{
  
     // database connection and table name
     private $conn;
