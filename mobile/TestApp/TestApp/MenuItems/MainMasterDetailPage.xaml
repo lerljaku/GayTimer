@@ -2,8 +2,8 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   x:Class="GayTimer.MenuItems.MainMasterDetailPage"
-                  xmlns:views="clr-namespace:TestApp.Views"
-                  xmlns:pages="clr-namespace:TestApp.MenuItems">
+                  xmlns:views="clr-namespace:GayTimer.Views"
+                  xmlns:pages="clr-namespace:GayTimer.MenuItems">
     <MasterDetailPage.Master>
         <pages:MainMasterDetailPageMaster x:Name="MasterPage" />
     </MasterDetailPage.Master>

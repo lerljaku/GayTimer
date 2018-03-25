@@ -1,26 +1,20 @@
 <?php
-class Gay{
+abstract class EntityBase{
  
     // database connection and table name
     private $conn;
-    private $table_name = "Gay";
- 
-    // object properties
-    public $id;
-    public $firstName;
-    public $lastName;
-    public $nick;
-    public $created;
- 
+    
+    abstract protected function TableName();
+
     // constructor with $db as database connection
-    public function __construct($db){
+    protected function __construct($db){
         $this->conn = $db;
     }
         
-    function read()
+    function readAll()
     { 
         // select all query
-        $query = "SELECT * FROM " . $this->table_name;
+        $query = "SELECT * FROM " . TableName();
      
         // prepare query statement
         $stmt = $this->conn->prepare($query);
