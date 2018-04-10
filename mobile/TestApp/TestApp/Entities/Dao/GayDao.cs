@@ -9,11 +9,11 @@ namespace GayTimer.Entities.Dao
 {
     public class GayDao
     {
-        private static HttpClient m_client = new HttpClient();
+        private static readonly HttpClient m_client = new HttpClient();
 
         private readonly string m_connectionString;
 
-        public GayDao(string connectionString = "http://localhost:8080/api")
+        public GayDao(string connectionString)
         {
             m_connectionString = connectionString;
         }
