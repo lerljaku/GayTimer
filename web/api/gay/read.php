@@ -23,7 +23,6 @@ if($num > 0){
  
     // gays array
     $gays_arr=array();
-    $gays_arr["records"]=array();
  
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -42,7 +41,7 @@ if($num > 0){
             "Created" => $Created,
         );
  
-        array_push($gays_arr["records"], $gay_item);
+        array_push($gays_arr, $gay_item);
     }
  
     echo json_encode($gays_arr);

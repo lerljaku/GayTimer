@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -13,12 +14,12 @@ namespace GayTimer.Entities.Dao
 
         private readonly string m_connectionString;
 
-        public GayDao(string connectionString = "http://localhost:8080/api")
+        public GayDao(string connectionString = "http://192.168.0.103:8080/api")
         {
             m_connectionString = connectionString;
         }
 
-        public async Task<List<Gay>> SelectAll()
+        public async Task<Gay[]> SelectAll()
         {
             var uri = new Uri($"{m_connectionString}/gay/read.php");
 
@@ -28,9 +29,7 @@ namespace GayTimer.Entities.Dao
             {
                 var content = await response.Content.ReadAsStringAsync();
 
-                var allGays = JsonConvert.DeserializeObject<List<Gay>>(content);
-
-                return allGays;
+                return JsonConvert.DeserializeObject<Gay[]>(content);
             }
             
             throw new HttpRequestException($"Invalid status code: {response.StatusCode}");
