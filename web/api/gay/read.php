@@ -38,6 +38,8 @@ if($num > 0){
             "FirstName" => $FirstName,
             "LastName" => $LastName,
             "Nick" => $Nick,
+            "Password" => $Password,
+            "PasswordSalt" => $PasswordSalt,
             "Created" => $Created,
         );
  

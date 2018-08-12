@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             d:DataContext="{d:DesignInstance viewModels:LoginViewModel}"
+             x:Class="GayTimer.Views.LoginView">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <Entry Grid.Row="1" Margin="2" Grid.Column="1" Text="{Binding Login}" Placeholder="Login" PlaceholderColor="Gray" />
+
+            <Entry Grid.Row="2" Margin="2" Grid.Column="1" Text="{Binding Password}" IsPassword="True" PlaceholderColor="Gray" Placeholder="Password" />
+
+            <StackLayout Grid.Row="3" Orientation="Horizontal" Grid.Column="1">
+                <Button Margin="2" Command="{Binding NewUserCommand}" Text="New user" />
+                <Button Margin="2" Command="{Binding SignCommand}" Text="Login" />
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
