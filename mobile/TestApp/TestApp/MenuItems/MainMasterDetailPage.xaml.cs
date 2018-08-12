@@ -1,4 +1,7 @@
-﻿using GayTimer.Views;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using GayTimer.ViewModels;
+using GayTimer.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
