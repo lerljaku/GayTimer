@@ -10,7 +10,7 @@ class Gay{
     public $firstName;
     public $lastName;
     public $nick;
-    public $password;
+    public $passwordHash;
     public $passwordSalt;
     public $created;
  
@@ -40,7 +40,7 @@ class Gay{
         firstName=:firstName, 
         lastName=:lastName, 
         nick=:nick, 
-        password=:password, 
+        passwordHash=:passwordHash, 
         passwordSalt=:passwordSalt, 
         created=:created";
  
@@ -51,15 +51,15 @@ class Gay{
         $this->name=htmlspecialchars(strip_tags($this->firstName));
         $this->lastName=htmlspecialchars(strip_tags($this->lastName));
         $this->nick=htmlspecialchars(strip_tags($this->nick));
-        $this->password=htmlspecialchars(strip_tags($this->password));
+        $this->passwordHash=htmlspecialchars(strip_tags($this->passwordHash));
         $this->passwordSalt=htmlspecialchars(strip_tags($this->passwordSalt));
         $this->created=htmlspecialchars(strip_tags($this->created));
  
         // bind values
-        $stmt->bindParam(":firstName", $this->firstName);
-        $stmt->bindParam(":lastName", $this->lastName);
+        $stmt->bindParam(":firstName", $this->nick);
+        $stmt->bindParam(":lastName", $this->nick);
         $stmt->bindParam(":nick", $this->nick);
-        $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":passwordHash", $this->passwordHash);
         $stmt->bindParam(":passwordSalt", $this->passwordSalt);
         $stmt->bindParam(":created", $this->created);
  
@@ -67,9 +67,10 @@ class Gay{
         if($stmt->execute()){
             return true;
         }
- 
+        
+        print_r($stmt->errorInfo()[2]);
+                
         return false;
-     
     }
 }
 ?>

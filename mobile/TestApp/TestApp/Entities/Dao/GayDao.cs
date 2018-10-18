@@ -12,52 +12,56 @@ namespace GayTimer.Entities.Dao
 {
     public class GayDao : DaoBase
     {
-        private static readonly HttpClient m_client = new HttpClient();
-
-        private readonly string m_connectionString;
-
-        public GayDao(string connectionString = "http://192.168.0.104:8080/api")
+        public GayDao(string connectionString) : base (connectionString)
         {
-            m_connectionString = connectionString;
         }
 
         public async Task<Gay[]> SelectAll()
         {
-            var uri = new Uri($"{m_connectionString}/gay/read.php");
+            var uri = new Uri($"{ConStr}/gay/read.php");
 
-            var response = await m_client.GetAsync(uri);
+            HttpResponseMessage response = null;
 
-            if (response.IsSuccessStatusCode)
+            using (var client = CreateClient())
             {
-                var content = await response.Content.ReadAsStringAsync();
+                response = await client.GetAsync(uri);
 
-                return JsonConvert.DeserializeObject<Gay[]>(content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    return JsonConvert.DeserializeObject<Gay[]>(content);
+                }
+
             }
             
             throw new HttpRequestException($"Invalid status code: {response.StatusCode}");
         }
 
-        public async Task<bool> Insert(string nickname, string password, string pwdSalt)
+        public async Task<string> Insert(string nickname, string password, string pwdSalt)
         {
-            var uri = new Uri($"{m_connectionString}/gay/create.php");
+            var uri = new Uri($"{ConStr}/gay/create.php");
 
             var newGay = new Gay
             {
                 Created = DateTime.Now,
-                FirstName = nickname,
+                Nick = nickname,
                 Password = password,
                 PasswordSalt = pwdSalt,
             };
 
             var serObj = JsonConvert.SerializeObject(newGay);
 
-            var response = await m_client.PostAsync(uri, new StringContent(serObj, Encoding.UTF8, "application/json"));
-            if (response.IsSuccessStatusCode)
+            using (var client = CreateClient())
             {
-                return true;
-            }
+                var response = await client.PostAsync(uri, new StringContent(serObj, Encoding.UTF8, "application/json"));
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
 
-            throw new HttpRequestException($"Invalid status code: {response.StatusCode}{Environment.NewLine}{response.Content}");
+                throw new HttpRequestException($"Invalid status code: {response.StatusCode}{Environment.NewLine}{response.Content}");
+            }
         }
     }
 }

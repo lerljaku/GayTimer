@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS `Gay` (
   `LastName` varchar(50) NOT NULL,
   `Nick` varchar(50) NOT NULL,
   `Created` datetime NOT NULL,
+  `PasswordHash` varchar(50) NOT NULL,
+  `PasswordSalt` varchar(50) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Gay entity represents a single actor (MTG player) in the system. Such an actor owns a deck, plays games, belongs to a playgroup, etc.';
 

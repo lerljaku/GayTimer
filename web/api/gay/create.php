@@ -26,17 +26,22 @@ $user->password = $data->Password;
 $user->passwordSalt = $data->PasswordSalt;
 $user->created = $data->Created;
  
+error_log($data->Nick);
+error_log($data->Password);
+error_log($data->PasswordSalt);
+error_log($data->Created);
+
 // create the product
 if($user->create()){
     echo '{';
-        echo '"message": "Product was created."';
+        echo '"message": "User was created."';
     echo '}';
 }
  
 // if unable to create the product, tell the user
 else{
     echo '{';
-        echo '"message": "Unable to create product."';
+        echo '"message": "Unable to create user."';
     echo '}';
 }
 ?>

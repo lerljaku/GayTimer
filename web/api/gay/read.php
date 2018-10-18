@@ -38,7 +38,7 @@ if($num > 0){
             "FirstName" => $FirstName,
             "LastName" => $LastName,
             "Nick" => $Nick,
-            "Password" => $Password,
+            "PasswordHash" => $PasswordHash,
             "PasswordSalt" => $PasswordSalt,
             "Created" => $Created,
         );

@@ -15,13 +15,13 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-
 
             <Entry Grid.Row="1" Margin="2" Grid.Column="1" Text="{Binding Login}" Placeholder="Login" PlaceholderColor="Gray" />
 
@@ -32,6 +32,7 @@
                 <Button Margin="2" Command="{Binding SignCommand}" Text="Login" />
             </StackLayout>
 
+            <Label Text="{Binding ErrorMessage}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

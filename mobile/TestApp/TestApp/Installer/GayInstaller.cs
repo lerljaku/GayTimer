@@ -28,7 +28,7 @@ namespace GayTimer.Installer
             builder.RegisterType<AppContentService>().As<IAppContentService>();
 
             // dao
-            builder.RegisterType<GayDao>().WithParameter("connectionString", "http://localhost:8080/api");
+            builder.RegisterType<GayDao>().WithParameter("connectionString", "http://192.168.0.103:8080/api");
 
             return builder;
         }

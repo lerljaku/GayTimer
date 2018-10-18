@@ -26,25 +26,12 @@ namespace GayTimer.ViewModels
 
             SignCommand = new RelayCommand(Sign);
             NewUserCommand = new RelayCommand(NewUser);
-
-            test();
         }
 
         public ICommand SignCommand { get; }
 
         public ICommand NewUserCommand { get; }
-
-        [Conditional("DEBUG")]
-        private async void test()
-        {
-            Login = "jakub";
-            Password = "1234";
-
-            var users = await m_gayDao.SelectAll();
-
-            NewUser();
-        }
-
+        
         private string m_login;
         public string Login
         {
@@ -67,6 +54,17 @@ namespace GayTimer.ViewModels
             }
         }
 
+        private string m_errorMessage;
+        public string ErrorMessage
+        {
+            get => m_errorMessage;
+            set
+            {
+                m_errorMessage = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private async void NewUser()
         {
             var salt = GetSalt();
@@ -79,7 +77,7 @@ namespace GayTimer.ViewModels
 
             try
             {
-                var result = await m_gayDao.Insert(Login, hashStr, salt);
+                ErrorMessage = await m_gayDao.Insert(Login, hashStr, salt);
             }
             catch (Exception exception)
             {
