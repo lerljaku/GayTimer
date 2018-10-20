@@ -46,7 +46,7 @@ namespace GayTimer.Entities.Dao
             {
                 Created = DateTime.Now,
                 Nick = nickname,
-                Password = password,
+                PasswordHash = password,
                 PasswordSalt = pwdSalt,
             };
 

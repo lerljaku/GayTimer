@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Autofac;
 using GayTimer.Entities.Dao;
@@ -23,9 +24,10 @@ namespace GayTimer.Installer
 
             // services
             builder.RegisterType<SerializerProvider>().As<ISerializerProvider>();
-            builder.RegisterType<LoginService>().As<ILoginService>().WithParameter("userDataPath", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            builder.RegisterType<LoginService>().As<ILoginService>().WithParameter("userDataPath", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "userData.txt"));
             builder.RegisterType<CurrentUser>().As<ICurrentUser>();
             builder.RegisterType<AppContentService>().As<IAppContentService>();
+            builder.RegisterType<ErrorService>().As<IErrorService>();
 
             // dao
             builder.RegisterType<GayDao>().WithParameter("connectionString", "http://192.168.0.103:8080/api");

@@ -17,12 +17,14 @@ namespace GayTimer.ViewModels
         private readonly GayDao m_gayDao;
         private readonly MainMasterDetailPageMasterViewModel m_mainView;
         private readonly IAppContentService m_appContentService;
+        private readonly ILoginService m_loginService;
 
-        public LoginViewModel(GayDao gayDao, MainMasterDetailPageMasterViewModel mainView, IAppContentService appContentService)
+        public LoginViewModel(GayDao gayDao, MainMasterDetailPageMasterViewModel mainView, IAppContentService appContentService, ILoginService loginService)
         {
             m_gayDao = gayDao;
             m_mainView = mainView;
             m_appContentService = appContentService;
+            m_loginService = loginService;
 
             SignCommand = new RelayCommand(Sign);
             NewUserCommand = new RelayCommand(NewUser);
@@ -93,7 +95,7 @@ namespace GayTimer.ViewModels
             var user = users.FirstOrDefault(d => d.Nick == Login);
             if (user == null)
             {
-                throw new NotImplementedException($"user '{Login}' not found");
+                ErrorMessage = $"user '{Login}' not found";
                 return;
             }
 
@@ -102,10 +104,19 @@ namespace GayTimer.ViewModels
             var hash = m_md5.ComputeHash(bytes);
 
             var hashStr = Encoding.UTF8.GetString(hash);
+            if (hashStr != user.PasswordHash)
+            {
+                ErrorMessage = $"'{Login}' password is wrong";
+                return;
+            }
 
-            if (hashStr != user.Password)
-                throw new NotImplementedException($"'{Login}' password is wrong");
+            m_loginService.SetLogin(user);
 
+            GoToMainView();
+        }
+
+        private void GoToMainView()
+        {
             var view = new MainMasterDetailPage
             {
                 Master = new MainMasterDetailPageMaster
