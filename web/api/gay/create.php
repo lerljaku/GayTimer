@@ -22,12 +22,12 @@ $data = json_decode(file_get_contents("php://input"));
  
 // set product property values
 $user->nick = $data->Nick;
-$user->password = $data->Password;
+$user->passwordHash = $data->PasswordHash;
 $user->passwordSalt = $data->PasswordSalt;
 $user->created = $data->Created;
  
 error_log($data->Nick);
-error_log($data->Password);
+error_log($data->PasswordHash);
 error_log($data->PasswordSalt);
 error_log($data->Created);
 
