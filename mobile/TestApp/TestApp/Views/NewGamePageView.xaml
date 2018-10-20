@@ -1,12 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             d:DataContext="{d:DesignInstance viewModels:NewGameViewModel}"
              x:Class="GayTimer.Views.NewGamePageView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="# Players" />
+                <Stepper Value="{Binding PlayerCount}" Maximum="5" Minimum="2" />
+                <Label Text="{Binding PlayerCount}" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Starting life total" />
+                <Button Text="20" Command="{Binding SetStartingLifeTotalCommand}" CommandParameter="{x:Static viewModels:NewGameViewModel.Twenty}"  />
+                <Button Text="30" Command="{Binding SetStartingLifeTotalCommand}" CommandParameter="{x:Static viewModels:NewGameViewModel.Thirty}"  />
+                <Button Text="40" Command="{Binding SetStartingLifeTotalCommand}" CommandParameter="{x:Static viewModels:NewGameViewModel.Forty}" />
+                <Label Text="{Binding StartingLifeTotal}" />
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+
+        <Button Grid.Row="1" Text="Apply" Command="{Binding ApplyCommand}" />
+    </Grid>
 </ContentPage>

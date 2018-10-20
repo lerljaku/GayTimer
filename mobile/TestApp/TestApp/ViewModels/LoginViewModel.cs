@@ -119,7 +119,7 @@ namespace GayTimer.ViewModels
         {
             var view = new MainMasterDetailPage
             {
-                Master = new MainMasterDetailPageMaster
+                Master = 
                 {
                     BindingContext = m_mainView,
                 }

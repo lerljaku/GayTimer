@@ -31,13 +31,12 @@ namespace GayTimer.Bootstrapper
             var logged = loginService.Login();
             if (logged)
             {
-                view = new MainMasterDetailPage
+                var mdp = new MainMasterDetailPage
                 {
-                    Master = new MainMasterDetailPageMaster
-                    {
-                        BindingContext = m_container.Resolve<MainMasterDetailPageMasterViewModel>()
-                    }
+                    Master = {BindingContext = m_container.Resolve<MainMasterDetailPageMasterViewModel>()}
                 };
+                
+                view = mdp;
             }
             else
             {

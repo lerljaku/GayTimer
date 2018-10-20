@@ -2,12 +2,16 @@
 {
     public class GamePageViewModel : ScreenBase
     {
-        public GamePageViewModel()
+        private PlayerViewModel[] m_allPlayers;
+        public PlayerViewModel[] AllPlayers
         {
-            Init();
+            get => m_allPlayers;
+            set
+            {
+                m_allPlayers = value;
+                NotifyPropertyChanged();
+            }
         }
-        
-        public PlayerViewModel[] AllPlayers { get; set; }
 
         public void Init()
         {
