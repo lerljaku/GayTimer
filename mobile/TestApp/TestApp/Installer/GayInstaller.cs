@@ -23,11 +23,11 @@ namespace GayTimer.Installer
             builder.RegisterType<MainMasterDetailPageMasterViewModel>();
 
             // services
-            builder.RegisterType<SerializerProvider>().As<ISerializerProvider>();
-            builder.RegisterType<LoginService>().As<ILoginService>().WithParameter("userDataPath", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "userData.txt"));
-            builder.RegisterType<CurrentUser>().As<ICurrentUser>();
-            builder.RegisterType<AppContentService>().As<IAppContentService>();
-            builder.RegisterType<ErrorService>().As<IErrorService>();
+            builder.RegisterType<SerializerProvider>().As<ISerializerProvider>().SingleInstance();
+            builder.RegisterType<LoginService>().As<ILoginService>().WithParameter("userDataPath", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "userData.txt")).SingleInstance();
+            builder.RegisterType<CurrentUser>().As<ICurrentUser>().SingleInstance();
+            builder.RegisterType<AppContentService>().As<IAppContentService>().SingleInstance();
+            builder.RegisterType<ErrorService>().As<IErrorService>().SingleInstance();
 
             // dao
             builder.RegisterType<GayDao>().WithParameter("connectionString", "http://192.168.0.103:8080/api");

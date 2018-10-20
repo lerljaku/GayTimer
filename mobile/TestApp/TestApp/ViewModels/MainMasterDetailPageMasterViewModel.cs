@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using Autofac;
-using GayTimer.Entities.Dao;
-using GayTimer.MenuItems;
+using GayTimer.Entities;
+using GayTimer.Services;
 using GayTimer.Views;
 using Xamarin.Forms;
 
@@ -10,10 +10,12 @@ namespace GayTimer.ViewModels
 {
     public class MainMasterDetailPageMasterViewModel : ScreenBase
     {
-        public ObservableCollection<MainMasterDetailPageMenuItem> MenuItems { get; set; }
+        private readonly ICurrentUser m_currentUser;
 
-        public MainMasterDetailPageMasterViewModel(IComponentContext container)
+        public MainMasterDetailPageMasterViewModel(IComponentContext container, ICurrentUser currentUser)
         {
+            m_currentUser = currentUser;
+
             MenuItems = new ObservableCollection<MainMasterDetailPageMenuItem>(new[]
             {
                 new MainMasterDetailPageMenuItem { Id = 0, Title = "Nova", Page = new Lazy<Page>(() => new NewGamePageView() { BindingContext = container.Resolve<NewGameViewModel>() }) },
@@ -23,5 +25,9 @@ namespace GayTimer.ViewModels
                 new MainMasterDetailPageMenuItem { Id = 3, Title = "Settings", Page = new Lazy<Page>(() => new SettingsView()) },
             });
         }
+
+        public ObservableCollection<MainMasterDetailPageMenuItem> MenuItems { get; set; }
+
+        public Gay User => m_currentUser.User;
     }
 }

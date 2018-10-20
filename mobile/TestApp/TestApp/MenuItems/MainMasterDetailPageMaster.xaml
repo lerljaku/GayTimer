@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              x:Class="GayTimer.MenuItems.MainMasterDetailPageMaster"
+             mc:Ignorable="d"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             d:DataContext="{d:DesignInstance viewModels:MainMasterDetailPageMasterViewModel}"
              Title="Master">
     <StackLayout>
         <ListView x:Name="MenuItemsListView"
@@ -24,7 +29,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="2"
-                        Text="Gay Timer"
+                        Text="{Binding User.Nick}"
                         Style="{DynamicResource SubtitleStyle}" />
                 </Grid>
             </ListView.Header>
