@@ -13,9 +13,9 @@ USE `GayRate`;
 -- Dumping structure for table Gaycardsdb.playgroup
 CREATE TABLE IF NOT EXISTS `Playgroup` (
   `Id` tinyint(3) unsigned AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL,
-  `PasswordHash` varchar(50) NOT NULL,
-  `PasswordSalt` varchar(50) NOT NULL,
+  `Name` nvarchar(50) NOT NULL,
+  `PasswordHash` nvarchar(50) NOT NULL,
+  `PasswordSalt` nvarchar(50) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Playgroup is an entity  that groups together Gays that play games togeher. A Gay can belong to several playgroups at once, but each game is only played within a single playgroup. This allows for keeping track of statistics on a playgroup level.';
 
@@ -23,20 +23,21 @@ CREATE TABLE IF NOT EXISTS `Playgroup` (
 -- Dumping structure for table Gaycardsdb.Gay
 CREATE TABLE IF NOT EXISTS `Gay` (
   `Id` smallint(5) unsigned AUTO_INCREMENT,
-  `FirstName` varchar(50) NOT NULL,
-  `LastName` varchar(50) NOT NULL,
-  `Nick` varchar(50) NOT NULL,
+  `FirstName` nvarchar(50) NOT NULL,
+  `LastName` nvarchar(50) NOT NULL,
+  `Nick` nvarchar(50) NOT NULL,
   `Created` datetime NOT NULL,
-  `PasswordHash` varchar(50) NOT NULL,
-  `PasswordSalt` varchar(50) NOT NULL,
+  `PasswordHash` nvarchar(50) NOT NULL,
+  `PasswordSalt` nvarchar(50) NOT NULL,  
+  CONSTRAINT `UQ_Nick` UNIQUE (`Nick`),
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Gay entity represents a single actor (MTG player) in the system. Such an actor owns a deck, plays games, belongs to a playgroup, etc.';
 
 -- Dumping structure for table Gaycardsdb.deck
 CREATE TABLE IF NOT EXISTS `Deck` (
   `Id` smallint(6) unsigned AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL,
-  `Description` varchar(255) NOT NULL,
+  `Name` nvarchar(50) NOT NULL,
+  `Description` nvarchar(255) NOT NULL,
   `OwnerId` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `FK_Owner` (`OwnerId`),
@@ -47,8 +48,8 @@ CREATE TABLE IF NOT EXISTS `Deck` (
 -- Dumping structure for table Gaycardsdb.GameFormat
 CREATE TABLE IF NOT EXISTS `GameFormat` (
   `Id` tinyint(3) unsigned AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL,
-  `Description` varchar(250) NOT NULL,
+  `Name` nvarchar(50) NOT NULL,
+  `Description` nvarchar(250) NOT NULL,
   `PlayersMin` tinyint(3) unsigned NOT NULL DEFAULT 2,
   `PlayersMax` tinyint(3) unsigned NOT NULL,
   `IsSingleton` tinyint(1) unsigned NOT NULL DEFAULT 1,
@@ -62,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `Game` (
   `FormatId` tinyint(3) unsigned NULL,
   `StartedAt` datetime NOT NULL,
   `FinishedAt` datetime NOT NULL,
-  `Notes` varchar(255) NOT NULL,
+  `Notes` nvarchar(255) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `FK_Format` (`FormatId`),
   CONSTRAINT `FK_Format` FOREIGN KEY (`FormatId`) REFERENCES `GameFormat` (`Id`)
