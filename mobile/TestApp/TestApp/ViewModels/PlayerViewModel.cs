@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Windows.Input;
 using GayTimer;
+using GayTimer.Entities;
 
 namespace GayTimer.ViewModels
 {
@@ -13,13 +14,14 @@ namespace GayTimer.ViewModels
         private readonly Timer m_timer;
         private bool m_isRunning;
 
-        public PlayerViewModel()
+        public PlayerViewModel(SelectGayViewModel selectGayViewModel)
         {
             m_timer = new Timer(IncrementTime);
 
             IncrementHealthCommand = new RelayCommand(IncrementHealth);
             DecrementHealthCommand = new RelayCommand(DecrementHealth);
             ToggleTimerCommand = new RelayCommand(ToggleTimer);
+            SelectGayCommand = new RelayCommand(SelectGay);
         }
 
         public event TimerToggledEvent TimerToggled;
@@ -27,6 +29,18 @@ namespace GayTimer.ViewModels
         public ICommand IncrementHealthCommand { get; set; }
         public ICommand DecrementHealthCommand { get; set; }
         public ICommand ToggleTimerCommand { get; set; }
+        public ICommand SelectGayCommand { get; set; }
+
+        private Gay m_player;
+        public Gay Player
+        {
+            get => m_player;
+            set
+            {
+                m_player = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         private ushort m_health;
         public ushort Health
@@ -80,6 +94,11 @@ namespace GayTimer.ViewModels
                 m_timer.Change(0, 0);
 
             IsRunning = false;
+        }
+
+        private void SelectGay()
+        {
+
         }
 
         private void IncrementHealth()
