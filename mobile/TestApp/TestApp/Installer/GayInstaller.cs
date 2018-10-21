@@ -18,9 +18,9 @@ namespace GayTimer.Installer
             // vm
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<GayPageViewModel>();
-            builder.RegisterType<GamePageViewModel>();
+            builder.RegisterType<GamePageViewModel>().SingleInstance();
             builder.RegisterType<NewGameViewModel>();
-            builder.RegisterType<MainMasterDetailPageMasterViewModel>();
+            builder.RegisterType<MainMasterDetailPageMasterViewModel>().SingleInstance();
 
             // services
             builder.RegisterType<SerializerProvider>().As<ISerializerProvider>().SingleInstance();

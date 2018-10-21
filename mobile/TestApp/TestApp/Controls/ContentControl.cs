@@ -14,6 +14,15 @@ namespace GayTimer.Controls
             set => SetValue(ItemTemplateProperty, value);
         }
 
+        public static readonly BindableProperty TemplateSelectorContextProperty = BindableProperty.Create(
+            "TemplateSelectorContext", typeof(object), typeof(ContentControl), propertyChanged: OnTemplateSelectorChanged);
+
+        public object TemplateSelectorContext
+        {
+            get => GetValue(TemplateSelectorContextProperty);
+            set => SetValue(TemplateSelectorContextProperty, value);
+        }
+
         public static readonly BindableProperty TemplateSelectorProperty = BindableProperty.Create("TemplateSelector", 
             typeof(DataTemplateSelector), typeof(ContentControl), null, propertyChanged: OnTemplateSelectorChanged);
 
@@ -30,7 +39,10 @@ namespace GayTimer.Controls
             var selector = cc.TemplateSelector;
             if (selector != null)
             {
-                var content = (View) selector.SelectTemplate(cc.BindingContext, null).CreateContent();
+                var content = (View) selector.SelectTemplate(cc.TemplateSelectorContext, null)?.CreateContent();
+                if (content != null)
+                    content.BindingContext = cc.TemplateSelectorContext;
+
                 cc.Content = content;
             }
             else

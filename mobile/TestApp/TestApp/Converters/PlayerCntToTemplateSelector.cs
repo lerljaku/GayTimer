@@ -8,9 +8,11 @@ namespace GayTimer.Converters
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
             var players = item as PlayerViewModel[];
+
+            //var players = vm?.AllPlayers;
             if (players == null)
                 return null;
-
+       
             if (players.Length == 2)
                 return Player2Template;
 

@@ -2,6 +2,11 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:gayApp="clr-namespace:GayTimer.Converters;assembly=GayTimer"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             d:DataContext="{d:DesignInstance viewModels:PlayerViewModel}"
              x:Class="GayTimer.Views.PlayerView">
     <ContentView.Resources>
         <ResourceDictionary>

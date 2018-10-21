@@ -7,11 +7,13 @@ namespace GayTimer.ViewModels
 {
     public class NewGameViewModel : ScreenBase
     {
-        private readonly IAppContentService m_appContentService;
+        private readonly MainMasterDetailPageMasterViewModel m_masterDetail;
+        private readonly GamePageViewModel m_gamePageVm;
 
-        public NewGameViewModel(IAppContentService appContentService)
+        public NewGameViewModel(MainMasterDetailPageMasterViewModel masterDetail, GamePageViewModel gamePageVm)
         {
-            m_appContentService = appContentService;
+            m_masterDetail = masterDetail;
+            m_gamePageVm = gamePageVm;
             ApplyCommand = new RelayCommand(Apply);
             SetStartingLifeTotalCommand = new RelayCommand(SetStartingLifeTotal);
         }
@@ -52,14 +54,9 @@ namespace GayTimer.ViewModels
                 Health = StartingLifeTotal,
             }).ToArray();
 
-            var newGameVm = new GamePageViewModel()
-            {
-                AllPlayers = players,
-            };
-
-            newGameVm.Init();
-
-            m_appContentService.SetContent(new GamePageView(), newGameVm);
+            m_gamePageVm.AllPlayers = players;
+            
+            m_masterDetail.Activate(m_gamePageVm);
         }
 
         private void SetStartingLifeTotal(object obj)
