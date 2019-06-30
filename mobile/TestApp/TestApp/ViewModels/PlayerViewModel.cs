@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Windows.Input;
 using GayTimer;
 using GayTimer.Entities;
+using GayTimer.Services;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace GayTimer.ViewModels
 {
@@ -10,18 +13,21 @@ namespace GayTimer.ViewModels
 
     public class PlayerViewModel : ScreenBase
     {
+        private readonly IDataService m_dataService;
         private const int Miliseconds = 1000;
         private readonly Timer m_timer;
         private bool m_isRunning;
 
-        public PlayerViewModel(SelectGayViewModel selectGayViewModel)
+        public PlayerViewModel(IDataService dataService, Player player)
         {
+            Player = player;
+            m_dataService = dataService;
             m_timer = new Timer(IncrementTime);
 
             IncrementHealthCommand = new RelayCommand(IncrementHealth);
             DecrementHealthCommand = new RelayCommand(DecrementHealth);
             ToggleTimerCommand = new RelayCommand(ToggleTimer);
-            SelectGayCommand = new RelayCommand(SelectGay);
+            SelectPlayerCommand = new RelayCommand(SelectPlayer);
         }
 
         public event TimerToggledEvent TimerToggled;
@@ -29,21 +35,33 @@ namespace GayTimer.ViewModels
         public ICommand IncrementHealthCommand { get; set; }
         public ICommand DecrementHealthCommand { get; set; }
         public ICommand ToggleTimerCommand { get; set; }
-        public ICommand SelectGayCommand { get; set; }
+        public ICommand SelectPlayerCommand { get; set; }
 
-        private Gay m_player;
-        public Gay Player
+        public Player Player { get; private set; }
+
+        public string Nick
         {
-            get => m_player;
+            get => Player.Nick;
             set
             {
-                m_player = value;
+                Player.Nick = value;
                 NotifyPropertyChanged();
             }
         }
 
-        private ushort m_health;
-        public ushort Health
+        private double m_rotation = 90;
+        public double Rotation
+        {
+            get => m_rotation;
+            set
+            {
+                m_rotation = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private short m_health;
+        public short Health
         {
             get => m_health;
             set
@@ -96,9 +114,20 @@ namespace GayTimer.ViewModels
             IsRunning = false;
         }
 
-        private void SelectGay()
+        private async void SelectPlayer()
         {
+            var players = await m_dataService.SelectPlayers();
 
+            //Create actions
+            var actions = players.Select(d => d.Nick).ToArray();
+
+            //Show simple dialog
+            var result = await MaterialDialog.Instance.SelectActionAsync(actions: actions);
+            if (result >= 0)
+            {
+                Player = players.ElementAt(result);
+                NotifyPropertyChanged(nameof(Nick));
+            }
         }
 
         private void IncrementHealth()

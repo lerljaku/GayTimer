@@ -1,12 +1,11 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms.Xaml;
 
 namespace GayTimer.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GamePageView 
+    public partial class MainPageView 
     {
-        public GamePageView()
+        public MainPageView()
         {
             InitializeComponent();
         }

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="GayTimer.Views.PlayerListView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:GayTimer.Controls;assembly=GayTimer"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:entities="clr-namespace:GayTimer.Entities;assembly=GayTimer"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             x:Name="Cp"
+             Title="Players"
+             d:DataContext="{d:DesignInstance viewModels:PlayerListViewModel}"
+             mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid x:Name="Grid">
+            <ListView HasUnevenRows="True"
+                      ItemsSource="{Binding Players}"
+                      SelectionMode="None"
+                      SeparatorVisibility="None">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <ui:MaterialLabel Margin="12,4,0,0"
+                                          Text="Players"
+                                          TypeScale="H5" />
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell d:DataContext="{d:DesignInstance entities:Player}">
+                            <ViewCell.ContextActions>
+                                <MenuItem Command="{Binding Path=BindingContext.DeletePlayerCommand, Source={x:Reference Grid}}"
+                                          CommandParameter="{Binding}"
+                                          IsDestructive="True"
+                                          Text="Delete" />
+                            </ViewCell.ContextActions>
+                            <ui:MaterialCard Margin="4"
+                                             ClickCommand="{Binding Path=BindingContext.UpdatePlayerCommand, Source={x:Reference Grid}}"
+                                             ClickCommandParameter="{Binding}"
+                                             IsClickable="True">
+                                <ui:MaterialLabel Text="{Binding Nick}" TypeScale="Body1" />
+                            </ui:MaterialCard>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ui:MaterialButton Margin="12"
+                               ButtonType="Elevated"
+                               Command="{Binding AddPlayerCommand}"
+                               CornerRadius="32"
+                               FontSize="32"
+                               HeightRequest="64"
+                               HorizontalOptions="End"
+                               Text="+"
+                               VerticalOptions="End"
+                               WidthRequest="64" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Autofac;
-using GayTimer.Entities.Dao;
 using GayTimer.Services;
 using GayTimer.ViewModels;
 
@@ -16,11 +15,15 @@ namespace GayTimer.Installer
             var builder = new ContainerBuilder();
 
             // vm
-            builder.RegisterType<LoginViewModel>();
-            builder.RegisterType<GayPageViewModel>();
+            builder.RegisterType<PlayerListViewModel>().SingleInstance();
             builder.RegisterType<GamePageViewModel>().SingleInstance();
-            builder.RegisterType<NewGameViewModel>();
-            builder.RegisterType<MainMasterDetailPageMasterViewModel>().SingleInstance();
+            builder.RegisterType<NewGameViewModel>().SingleInstance();
+            builder.RegisterType<MainPageViewModel>().SingleInstance();
+            builder.RegisterType<PlayerDetailViewModel>().SingleInstance();
+            builder.RegisterType<SelectLifeTotalViewModel>().SingleInstance();
+            builder.RegisterType<SelectPlayerCountViewModel>().SingleInstance();
+            builder.RegisterType<GameHistoryViewModel>().SingleInstance();
+            builder.RegisterType<GameSummaryViewModel>().SingleInstance();
 
             // services
             builder.RegisterType<SerializerProvider>().As<ISerializerProvider>().SingleInstance();
@@ -30,7 +33,7 @@ namespace GayTimer.Installer
             builder.RegisterType<ErrorService>().As<IErrorService>().SingleInstance();
 
             // dao
-            builder.RegisterType<GayDao>().WithParameter("connectionString", "http://192.168.0.103:8080/api");
+            builder.RegisterType<DataService>().As<IDataService>().SingleInstance();
 
             return builder;
         }

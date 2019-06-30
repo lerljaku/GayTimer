@@ -1,35 +1,58 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="GayTimer.Views.PlayerView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:gayApp="clr-namespace:GayTimer.Converters;assembly=GayTimer"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gayApp="clr-namespace:GayTimer.Converters;assembly=GayTimer"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
              xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             x:Name="PlayerViewPage"
              d:DataContext="{d:DesignInstance viewModels:PlayerViewModel}"
-             x:Class="GayTimer.Views.PlayerView">
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <gayApp:IsRunningToColorConverter x:Key="IsRunningToColorConverter" />
-        </ResourceDictionary>
-    </ContentView.Resources>
+             mc:Ignorable="d">
     <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <gayApp:IsRunningToColorConverter x:Key="IsRunningToColorConverter" InactiveColor="{Binding Source={x:Reference PlayerViewPage}, Path=BackgroundColor}" />
+            </ResourceDictionary>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-               Grid.ColumnSpan="2"
-               Text="{Binding Health}" FontSize="72" TextColor="AliceBlue" />
+        <ui:MaterialLabel Grid.ColumnSpan="2"
+                          HorizontalTextAlignment="Center"
+                          Text="{Binding Health}"
+                          TextColor="White"
+                          TypeScale="H1"
+                          VerticalTextAlignment="Center" />
 
-        <Button Pressed="Button_OnPressed" Released="Button_OnReleased" BackgroundColor="CadetBlue" Opacity="0"
-                Grid.Column="0" Command="{Binding DecrementHealthCommand}" />
-        <Button Pressed="Button_OnPressed" Released="Button_OnReleased" BackgroundColor="CadetBlue" Opacity="0"
-                Grid.Column="1" Command="{Binding IncrementHealthCommand}" />
+        <ui:MaterialButton Grid.Column="0"
+                           BackgroundColor="Transparent"
+                           Command="{Binding DecrementHealthCommand}" />
+        <ui:MaterialButton Grid.Column="1"
+                           BackgroundColor="Transparent"
+                           Command="{Binding IncrementHealthCommand}" />
 
-        <Button Grid.ColumnSpan="2" Text="{Binding TimeSpent, StringFormat='{}{0:mm\\:ss}'}" Command="{Binding ToggleTimerCommand}" VerticalOptions="End"
-                HorizontalOptions="End" FontSize="32" BackgroundColor="Transparent" 
-                TextColor="{Binding IsRunning, Converter={StaticResource IsRunningToColorConverter}}" />
+        <ui:MaterialButton Grid.ColumnSpan="2"
+                           BackgroundColor="Transparent"
+                           Command="{Binding SelectPlayerCommand}"
+                           HorizontalOptions="Center"
+                           Text="{Binding Nick}"
+                           VerticalOptions="Start" />
+
+        <Button Grid.ColumnSpan="2"
+                Margin="0,0,0,-10"
+                Padding="0"
+                BackgroundColor="Black"
+                Command="{Binding ToggleTimerCommand}"
+                CornerRadius="5"
+                FontSize="22"
+                HeightRequest="36"
+                HorizontalOptions="Center"
+                Text="{Binding TimeSpent, StringFormat='{}{0:mm\\:ss}'}"
+                TextColor="{Binding IsRunning, Converter={StaticResource IsRunningToColorConverter}}"
+                VerticalOptions="End" />
     </Grid>
 </ContentView>

@@ -1,102 +1,163 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:GayTimer.ViewModels"
-             xmlns:testApp="clr-namespace:GayTimer.Views;assembly=GayTimer"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
-             xmlns:converters="clr-namespace:GayTimer.Converters;assembly=GayTimer"
-             xmlns:controls="clr-namespace:GayTimer.Controls;assembly=GayTimer"
-             d:DataContext="{d:DesignInstance viewModels:GamePageViewModel}"
-             x:Class="GayTimer.Views.GamePageView">
-    <controls:ContentControl TemplateSelectorContext="{Binding AllPlayers, Mode=TwoWay}">
-        <controls:ContentControl.TemplateSelector>
-            <converters:PlayerCntToTemplateSelector>
-                <converters:PlayerCntToTemplateSelector.Player2Template>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            
-                            <testApp:PlayerView Grid.Row="0" BindingContext="{Binding [0]}" BackgroundColor="Orange" />
-                            <testApp:PlayerView Grid.Row="1" BindingContext="{Binding [1]}" BackgroundColor="ForestGreen"/>
-                        </Grid>
-                    </DataTemplate>
-                </converters:PlayerCntToTemplateSelector.Player2Template>
-                <converters:PlayerCntToTemplateSelector.Player3Template>
-                    <DataTemplate x:Key="3PlayerTemplate">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage x:Class="GayTimer.Views.GamePageView"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:controls="clr-namespace:GayTimer.Controls;assembly=GayTimer"
+                  xmlns:converters="clr-namespace:GayTimer.Converters;assembly=GayTimer"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:local="clr-namespace:GayTimer.ViewModels"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:testApp="clr-namespace:GayTimer.Views;assembly=GayTimer"
+                  xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+                  xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+                  d:DataContext="{d:DesignInstance viewModels:GamePageViewModel}"
+                  NavigationPage.HasNavigationBar="false"
+                  mc:Ignorable="d">
+    <MasterDetailPage.Resources>
+        <Color x:Key="FirstPlayer">#57BB25</Color>
+        <Color x:Key="SecondPlayer">#257FBA</Color>
+        <Color x:Key="ThirdPlayer">#862FBD</Color>
+        <Color x:Key="FourthPlayer">#D7B800</Color>
+    </MasterDetailPage.Resources>
+    <MasterDetailPage.Master>
+        <ContentPage Title="Master">
+            <StackLayout Orientation="Vertical">
+                <Button Text="Load" Command="{Binding LoadGameCommand}" />
+                <Button Text="Exit" Command="{Binding ExitGameCommand}" />
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage>
+            <Grid Padding="0,6" BackgroundColor="Black">
+                <controls:ContentControl TemplateSelectorContext="{Binding AllPlayers, Mode=TwoWay}">
+                    <controls:ContentControl.TemplateSelector>
+                        <converters:PlayerCntToTemplateSelector>
+                            <converters:PlayerCntToTemplateSelector.Player2Template>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
 
-                            <testApp:PlayerView Grid.Row="0" Grid.Column="0" BindingContext="{Binding [0]}" BackgroundColor="Orange" />
-                            <testApp:PlayerView Grid.Row="1" Grid.Column="0" BindingContext="{Binding [1]}" BackgroundColor="ForestGreen"/>
-                            <testApp:PlayerView Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BindingContext="{Binding [2]}" BackgroundColor="MediumPurple"/>
-                        </Grid>
-                    </DataTemplate>
-                </converters:PlayerCntToTemplateSelector.Player3Template>
-                <converters:PlayerCntToTemplateSelector.Player4Template>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+                                        <testApp:PlayerView Grid.Row="0"
+                                                            BackgroundColor="{StaticResource FirstPlayer}"
+                                                            BindingContext="{Binding [0]}"
+                                                            Rotation="180" />
+                                        <testApp:PlayerView Grid.Row="1"
+                                                            BackgroundColor="{StaticResource SecondPlayer}"
+                                                            BindingContext="{Binding [1]}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </converters:PlayerCntToTemplateSelector.Player2Template>
+                            <converters:PlayerCntToTemplateSelector.Player3Template>
+                                <DataTemplate x:Key="3PlayerTemplate">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
 
-                            <testApp:PlayerView Grid.Row="0" Grid.Column="0" BindingContext="{Binding [0]}" BackgroundColor="Orange" />
-                            <testApp:PlayerView Grid.Row="0" Grid.Column="1" BindingContext="{Binding [1]}" BackgroundColor="ForestGreen"/>
-                            <testApp:PlayerView Grid.Row="1" Grid.Column="0" BindingContext="{Binding [2]}" BackgroundColor="MediumPurple"/>
-                            <testApp:PlayerView Grid.Row="1" Grid.Column="1" BindingContext="{Binding [3]}" BackgroundColor="DodgerBlue"/>
-                        </Grid>
-                    </DataTemplate>
-                </converters:PlayerCntToTemplateSelector.Player4Template>
-                <converters:PlayerCntToTemplateSelector.Player5Template>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+                                        <testApp:PlayerView Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            BackgroundColor="{StaticResource FirstPlayer}"
+                                                            BindingContext="{Binding [0]}" />
+                                        <testApp:PlayerView Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            BackgroundColor="{StaticResource SecondPlayer}"
+                                                            BindingContext="{Binding [1]}" />
+                                        <testApp:PlayerView Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Grid.ColumnSpan="2"
+                                                            BackgroundColor="{StaticResource ThirdPlayer}"
+                                                            BindingContext="{Binding [2]}"
+                                                            Rotation="180" />
+                                    </Grid>
+                                </DataTemplate>
+                            </converters:PlayerCntToTemplateSelector.Player3Template>
+                            <converters:PlayerCntToTemplateSelector.Player4Template>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Column="0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
+                                        <testApp:PlayerView Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            BackgroundColor="{StaticResource FirstPlayer}"
+                                                            BindingContext="{Binding [0]}"
+                                                            Rotation="180" />
+                                        <testApp:PlayerView Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            BackgroundColor="{StaticResource SecondPlayer}"
+                                                            BindingContext="{Binding [1]}"
+                                                            Rotation="180" />
+                                        <testApp:PlayerView Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            BackgroundColor="{StaticResource ThirdPlayer}"
+                                                            BindingContext="{Binding [2]}" />
+                                        <testApp:PlayerView Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            BackgroundColor="{StaticResource FourthPlayer}"
+                                                            BindingContext="{Binding [3]}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </converters:PlayerCntToTemplateSelector.Player4Template>
+                            <converters:PlayerCntToTemplateSelector.Player5Template>
+                                <DataTemplate>
+                                    <Label Text="Not supported yet" />
+                                    <!--<Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                                <testApp:PlayerView Grid.Row="0" BindingContext="{Binding [0]}" BackgroundColor="Orange" />
-                                <testApp:PlayerView Grid.Row="1" BindingContext="{Binding [1]}" BackgroundColor="ForestGreen"/>
-                                <testApp:PlayerView Grid.Row="2" BindingContext="{Binding [2]}" BackgroundColor="MediumPurple"/>
-                            </Grid>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
 
-                            <Grid Grid.Column="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
+                                    <testApp:PlayerView Grid.Row="0" BindingContext="{Binding [0]}" BackgroundColor="{StaticResource FirstPlayer}" />
+                                    <testApp:PlayerView Grid.Row="1" BindingContext="{Binding [1]}" BackgroundColor="{StaticResource SecondPlayer}"/>
+                                    <testApp:PlayerView Grid.Row="2" BindingContext="{Binding [2]}" BackgroundColor="{StaticResource ThirdPlayer}"/>
+                                </Grid>
 
-                                <testApp:PlayerView Grid.Row="0" BindingContext="{Binding [3]}" BackgroundColor="DodgerBlue"/>
-                                <testApp:PlayerView Grid.Row="1" BindingContext="{Binding [4]}" BackgroundColor="IndianRed"/>
-                            </Grid>
-                        </Grid>
-                    </DataTemplate>
-                </converters:PlayerCntToTemplateSelector.Player5Template>
-            </converters:PlayerCntToTemplateSelector>
-        </controls:ContentControl.TemplateSelector>
-    </controls:ContentControl>
-</ContentPage>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+
+                                    <testApp:PlayerView Grid.Row="0" BindingContext="{Binding [3]}" BackgroundColor="{StaticResource FourthPlayer}"/>
+                                    <testApp:PlayerView Grid.Row="1" BindingContext="{Binding [4]}" BackgroundColor="OrangeRed"/>
+                                </Grid>
+                            </Grid>-->
+                                </DataTemplate>
+                            </converters:PlayerCntToTemplateSelector.Player5Template>
+                        </converters:PlayerCntToTemplateSelector>
+                    </controls:ContentControl.TemplateSelector>
+                </controls:ContentControl>
+
+                <ui:MaterialIconButton Command="{Binding PassActivePlayerCommand}"
+                                       CornerRadius="32"
+                                       HeightRequest="64"
+                                       HorizontalOptions="Center"
+                                       Image="hourglass_24"
+                                       VerticalOptions="Center"
+                                       WidthRequest="64" />
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

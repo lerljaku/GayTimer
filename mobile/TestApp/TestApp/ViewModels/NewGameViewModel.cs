@@ -1,67 +1,91 @@
-﻿using System.Linq;
-using System.Windows.Input;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
+using GayTimer.Entities;
+using GayTimer.Events;
 using GayTimer.Services;
 using GayTimer.Views;
+using Xamarin.Forms;
 
 namespace GayTimer.ViewModels
 {
     public class NewGameViewModel : ScreenBase
     {
-        private readonly MainMasterDetailPageMasterViewModel m_masterDetail;
-        private readonly GamePageViewModel m_gamePageVm;
-
-        public NewGameViewModel(MainMasterDetailPageMasterViewModel masterDetail, GamePageViewModel gamePageVm)
-        {
-            m_masterDetail = masterDetail;
-            m_gamePageVm = gamePageVm;
-            ApplyCommand = new RelayCommand(Apply);
-            SetStartingLifeTotalCommand = new RelayCommand(SetStartingLifeTotal);
-        }
-
-        public static ushort Twenty => 20;
-        public static ushort Thirty => 30;
-        public static ushort Forty => 40;
-
-        public ICommand ApplyCommand { get; }
-        public ICommand SetStartingLifeTotalCommand { get; }
-
         private int m_playerCount = 4;
-        public int PlayerCount
+        private short m_startingLifeTotal = 40;
+
+        private readonly GamePageViewModel m_gamePageVm;
+        private readonly SelectLifeTotalViewModel m_selectLifeTotalVm;
+        private readonly SelectPlayerCountViewModel m_selectPlayerCntVm;
+        private readonly IDataService m_dataService;
+
+        public NewGameViewModel(GamePageViewModel gamePageVm, SelectLifeTotalViewModel selectLifeTotalVm, 
+            SelectPlayerCountViewModel selectPlayerCntVm, IDataService dataService)
         {
-            get => m_playerCount;
+            m_gamePageVm = gamePageVm;
+            m_selectLifeTotalVm = selectLifeTotalVm;
+            m_selectPlayerCntVm = selectPlayerCntVm;
+            m_dataService = dataService;
+
+            MessagingCenter.Subscribe<SelectPlayerCountViewModel, PlayerCountSelected>(this, nameof(Events.PlayerCountSelected), PlayerCountSelected);
+            MessagingCenter.Subscribe<SelectLifeTotalViewModel, LifeTotalSelected>(this, nameof(Events.LifeTotalSelected), LifeTotalSelected);
+        }
+
+        private ObservableCollection<ScreenBase> m_screens;
+        public ObservableCollection<ScreenBase> Screens
+        {
+            get => m_screens;
             set
             {
-                m_playerCount = value;
+                m_screens = value;
                 NotifyPropertyChanged();
             }
         }
 
-        private ushort m_startingLifeTotal = 40;
-        public ushort StartingLifeTotal
+        private ScreenBase m_selectedScreen;
+        public ScreenBase SelectedScreen
         {
-            get => m_startingLifeTotal;
+            get => m_selectedScreen;
             set
             {
-                m_startingLifeTotal = value;
+                m_selectedScreen = value;
                 NotifyPropertyChanged();
             }
         }
 
-        private void Apply()
+        public override void Activated()
         {
-            var players = Enumerable.Range(0, PlayerCount).Select(d => new PlayerViewModel()
+            Screens = new ObservableCollection<ScreenBase>(){ m_selectPlayerCntVm };
+            SelectedScreen = m_selectPlayerCntVm;
+        }
+
+        private void PlayerCountSelected(SelectPlayerCountViewModel vm, PlayerCountSelected playerCnt)
+        {
+            if (!Screens.Contains(m_selectLifeTotalVm))
+                Screens.Add(m_selectLifeTotalVm);
+
+            m_playerCount = playerCnt.PlayerCount;
+
+            SelectedScreen = m_selectLifeTotalVm;
+        }
+
+        private void LifeTotalSelected(SelectLifeTotalViewModel vm, LifeTotalSelected lifeTotal)
+        {
+            m_startingLifeTotal = lifeTotal.StartingLifeTotal;
+
+            Apply();
+        }
+
+        private async void Apply()
+        {
+            var players = Enumerable.Range(0, m_playerCount).Select(d => new PlayerViewModel(m_dataService, new Player(){Nick = $"gay {d}"})
             {
-                Health = StartingLifeTotal,
+                Health = m_startingLifeTotal,
             }).ToArray();
 
             m_gamePageVm.AllPlayers = players;
-            
-            m_masterDetail.Activate(m_gamePageVm);
-        }
 
-        private void SetStartingLifeTotal(object obj)
-        {
-            StartingLifeTotal = (ushort)obj;
+            App.PopAsync();
+            await App.PushAsync<GamePageView>(m_gamePageVm);
         }
     }
 }

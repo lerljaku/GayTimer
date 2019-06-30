@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="GayTimer.Views.SelectPlayerCountView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             d:DataContext="{d:DesignInstance viewModels:SelectPlayerCountViewModel}"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ui:MaterialButton Grid.Column="0"
+                           Margin="8"
+                           ButtonType="Flat"
+                           Command="{Binding Confirm2Command}"
+                           CommandParameter="2"
+                           FontSize="24"
+                           HeightRequest="64"
+                           Text="2" />
+        <ui:MaterialButton Grid.Column="1"
+                           Margin="8"
+                           ButtonType="Flat"
+                           Command="{Binding Confirm3Command}"
+                           CommandParameter="3"
+                           FontSize="24"
+                           HeightRequest="64"
+                           Text="3" />
+        <ui:MaterialButton Grid.Column="2"
+                           Margin="8"
+                           ButtonType="Flat"
+                           Command="{Binding Confirm4Command}"
+                           CommandParameter="4"
+                           FontSize="24"
+                           HeightRequest="64"
+                           Text="4" />
+    </Grid>
+</ContentPage>

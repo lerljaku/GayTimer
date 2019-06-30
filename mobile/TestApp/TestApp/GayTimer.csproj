@@ -5,49 +5,59 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.8.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
+    <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.540366" />
+    <PackageReference Include="XF.Material" Version="1.4.1.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
-    <Compile Update="ViewModels\MainMasterDetailPageMenuItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\GamePageView.xaml.cs">
       <DependentUpon>GamePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewGameView.xaml.cs">
+      <DependentUpon>NewGameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlayerListView.xaml.cs">
+      <DependentUpon>PlayerListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SelectLifeTotalView.xaml.cs">
+      <DependentUpon>SelectLifeTotalView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="MenuItems\MainMasterDetailPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="MenuItems\MainMasterDetailPageMaster.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\CurrentGamePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\GayPageView.xaml">
+    <EmbeddedResource Update="Views\GameHistoryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LoginView.xaml">
+    <EmbeddedResource Update="Views\GameSummaryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewGamePageView.xaml">
+    <EmbeddedResource Update="Views\MainPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewGameView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlayerListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlayerDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PlayerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SettingsView.xaml">
+    <EmbeddedResource Update="Views\SelectPlayerCountView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StatisticsView.xaml">
+    <EmbeddedResource Update="Views\SelectLifeTotalView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WelcomePageView.xaml">
@@ -56,7 +66,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Bootstrapper\" />
     <Folder Include="Commands\" />
+    <Folder Include="MenuItems\" />
   </ItemGroup>
 
   <ItemGroup>

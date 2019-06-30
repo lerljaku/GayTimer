@@ -10,11 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace GayTimer.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GayPageView : ContentPage
+	public partial class PlayerListView : ContentPage
     {
-		public GayPageView ()
+		public PlayerListView ()
         {
-			InitializeComponent ();
+			InitializeComponent();
 		}
 	}
 }

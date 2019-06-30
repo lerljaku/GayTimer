@@ -4,6 +4,6 @@
     {
         public TKey Id { get; set; }
 
-        public abstract string TableName { get; }
+        public string TableName => GetType().Name;
     }
 }

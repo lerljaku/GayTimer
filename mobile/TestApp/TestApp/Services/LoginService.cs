@@ -8,7 +8,7 @@ namespace GayTimer.Services
     {
         bool Login();
 
-        void SetLogin(Gay user);
+        void SetLogin(Player user);
     }
 
     public class LoginService : ILoginService
@@ -35,7 +35,7 @@ namespace GayTimer.Services
 
             try
             {
-                m_currentUser.User = m_serializerProvider.Deserialize<Gay>(File.ReadAllText(m_userDataPath));
+                m_currentUser.User = m_serializerProvider.Deserialize<Player>(File.ReadAllText(m_userDataPath));
 
                 return true;
             }
@@ -47,7 +47,7 @@ namespace GayTimer.Services
             }
         }
 
-        public void SetLogin(Gay user)
+        public void SetLogin(Player user)
         {
             File.WriteAllText(m_userDataPath, m_serializerProvider.Serialize(user));
         }

@@ -5,8 +5,8 @@ namespace GayTimer.Services
     public interface IAppContentService
     {
         void SetContent(Page view);
-
-        void SetContent(Page view, ScreenBase screen);
+        
+        void PushModel(Page view, ScreenBase vm);
     }
 
     public class AppContentService : IAppContentService
@@ -16,11 +16,11 @@ namespace GayTimer.Services
             Application.Current.MainPage = view;
         }
 
-        public void SetContent(Page view, ScreenBase vm)
+        public void PushModel(Page view, ScreenBase vm)
         {
             view.BindingContext = vm;
 
-            Application.Current.MainPage = view;
+            Application.Current.NavigationProxy.PushModalAsync(view);
         }
     }
 }

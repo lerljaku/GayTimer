@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="GayTimer.Views.MainPageView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GayTimer.Views"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             Title="Mtg clock"
+             d:DataContext="{d:DesignInstance viewModels:MainPageViewModel}"
+             NavigationPage.TitleIconImageSource="hourglass_24"
+             mc:Ignorable="d">
+    <StackLayout Orientation="Vertical">
+        <Button Command="{Binding NavigateToGameCommand}" Text="Game" />
+        <Button Command="{Binding NavigateToPlayersCommand}" Text="Players" />
+        <Button Command="{Binding NavigateToHistoryCommand}" Text="History" />
+    </StackLayout>
+</ContentPage>
