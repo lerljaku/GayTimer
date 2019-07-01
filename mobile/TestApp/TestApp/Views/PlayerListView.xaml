@@ -12,49 +12,60 @@
              Title="Players"
              d:DataContext="{d:DesignInstance viewModels:PlayerListViewModel}"
              mc:Ignorable="d">
-    <ContentPage.Content>
+    <ScrollView>
         <Grid x:Name="Grid">
-            <ListView HasUnevenRows="True"
-                      ItemsSource="{Binding Players}"
-                      SelectionMode="None"
-                      SeparatorVisibility="None">
-                <ListView.HeaderTemplate>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <controls:ItemsControl ItemsSource="{Binding Players}">
+                <controls:ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <ui:MaterialLabel Margin="12,4,0,0"
-                                          Text="Players"
-                                          TypeScale="H5" />
-                    </DataTemplate>
-                </ListView.HeaderTemplate>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell d:DataContext="{d:DesignInstance entities:Player}">
-                            <ViewCell.ContextActions>
-                                <MenuItem Command="{Binding Path=BindingContext.DeletePlayerCommand, Source={x:Reference Grid}}"
-                                          CommandParameter="{Binding}"
-                                          IsDestructive="True"
-                                          Text="Delete" />
-                            </ViewCell.ContextActions>
-                            <ui:MaterialCard Margin="4"
-                                             ClickCommand="{Binding Path=BindingContext.UpdatePlayerCommand, Source={x:Reference Grid}}"
-                                             ClickCommandParameter="{Binding}"
-                                             IsClickable="True">
-                                <ui:MaterialLabel Text="{Binding Nick}" TypeScale="Body1" />
-                            </ui:MaterialCard>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        <ui:MaterialCard d:DataContext="{d:DesignInstance entities:Player}"
+                                         ClickCommand="{Binding Path=BindingContext.UpdatePlayerCommand, Source={x:Reference Grid}}"
+                                         ClickCommandParameter="{Binding}"
+                                         IsClickable="True">
+                            <StackLayout Orientation="Horizontal">
+                                <ui:MaterialLabel HorizontalOptions="StartAndExpand"
+                                                  Text="{Binding Nick}"
+                                                  TypeScale="Body1"
+                                                  VerticalOptions="Center" />
 
-            <ui:MaterialButton Margin="12"
-                               ButtonType="Elevated"
-                               Command="{Binding AddPlayerCommand}"
-                               CornerRadius="32"
-                               FontSize="32"
-                               HeightRequest="64"
-                               HorizontalOptions="End"
-                               Text="+"
-                               VerticalOptions="End"
-                               WidthRequest="64" />
+                                <ui:MaterialMenuButton Margin="0"
+                                                       ButtonType="Text"
+                                                       Choices="{Binding Path=BindingContext.Actions, Source={x:Reference Grid}}"
+                                                       Command="{Binding Path=BindingContext.MenuItemCommand, Source={x:Reference Grid}}"
+                                                       CommandParameter="{Binding}"
+                                                       CornerRadius="16"
+                                                       HeightRequest="32"
+                                                       HorizontalOptions="End"
+                                                       Image="more_vert_24"
+                                                       WidthRequest="32" />
+                            </StackLayout>
+                        </ui:MaterialCard>
+                    </DataTemplate>
+                </controls:ItemsControl.ItemTemplate>
+            </controls:ItemsControl>
+
+            <ui:MaterialCard Grid.Row="1"
+                             ClickCommand="{Binding AddPlayerCommand}"
+                             IsClickable="True">
+                <StackLayout Orientation="Horizontal">
+                    <ui:MaterialIcon Source="person_add_24" />
+
+                    <ui:MaterialLabel Text="Add player" />
+                </StackLayout>
+            </ui:MaterialCard>
         </Grid>
-    </ContentPage.Content>
+    </ScrollView>
+    <!--<ui:MaterialButton Margin="12"
+                           ButtonType="Elevated"
+                           Command="{Binding AddPlayerCommand}"
+                           CornerRadius="32"
+                           FontSize="32"
+                           HeightRequest="64"
+                           HorizontalOptions="End"
+                           Text="+"
+                           VerticalOptions="End"
+                           WidthRequest="64" />-->
 </ContentPage>

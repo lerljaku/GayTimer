@@ -4,6 +4,7 @@ using System.Windows.Input;
 using GayTimer.Entities;
 using GayTimer.Events;
 using GayTimer.Services;
+using GayTimer.Views;
 using Xamarin.Forms;
 
 namespace GayTimer.ViewModels
@@ -12,20 +13,23 @@ namespace GayTimer.ViewModels
     {
         private Player m_player;
         private readonly IDataService m_dataService;
+        private readonly PlayerDecksViewModel m_playerDecksVm;
 
-        public PlayerDetailViewModel(IDataService dataService)
+        public PlayerDetailViewModel(IDataService dataService, PlayerDecksViewModel playerDecksVm)
         {
             m_dataService = dataService;
+            m_playerDecksVm = playerDecksVm;
 
             SaveCommand = new RelayCommand(Save);
             DiscardCommand = new RelayCommand(Discard);
+            NavigateToDecksCommand = new RelayCommand(NavigateToDecks);
         }
 
         public ICommand DiscardCommand { get; }
         public ICommand SaveCommand { get; }
         public ICommand NavigateToDecksCommand { get; }
 
-        private List<Deck> m_decks;
+        private List<Deck> m_decks = new List<Deck>();
         public List<Deck> Decks
         {
             get => m_decks;
@@ -65,6 +69,13 @@ namespace GayTimer.ViewModels
             Nick = m_player.Nick;
 
             Title = string.IsNullOrWhiteSpace(player.Nick) ? $"New user" : $"User - {player.Nick}";
+        }
+
+        private async void NavigateToDecks()
+        {
+            m_playerDecksVm.Init(m_player);
+
+            await App.PushAsync<PlayerDecksView>(m_playerDecksVm);
         }
 
         private void Save()

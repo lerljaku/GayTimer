@@ -33,7 +33,6 @@ namespace GayTimer
             try
             {
                 m_executeFunc.Invoke(parameter);
-
             }
             catch (Exception e)
             {

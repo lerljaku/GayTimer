@@ -34,7 +34,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <ui:MaterialButton Grid.Row="0"
+            <!--<ui:MaterialButton Grid.Row="0"
                                Grid.Column="0"
                                ButtonType="{Binding PlayerResults[0].PlayerButtonType}"
                                Command="{Binding SelectPlayerCommand}"
@@ -81,15 +81,15 @@
                                ButtonType="{Binding PlayerResults[3].DeckButtonType}"
                                Command="{Binding SelectDeckCommand}"
                                IsVisible="{Binding Player4Visible}"
-                               Text="{Binding PlayerResults[3].Deck.Name}" />
+                               Text="{Binding PlayerResults[3].Deck.Name}" />-->
         </Grid>
 
-        <ui:MaterialButton Grid.Row="1"
+        <!--<ui:MaterialButton Grid.Row="1"
                            Grid.Column="0"
                            Grid.ColumnSpan="2"
                            ButtonType="{Binding WinnersButtonType}"
                            Command="{Binding SelectWinnersCommand}"
-                           Text="{Binding Winners}" />
+                           Text="{Binding Winners}" />-->
 
         <Editor x:Name="NickField"
                 Grid.Row="2"

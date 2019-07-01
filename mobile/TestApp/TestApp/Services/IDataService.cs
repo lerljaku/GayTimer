@@ -17,6 +17,8 @@ namespace GayTimer.Services
 
         Task<List<Game>> SelectGames();
         Task Insert(Game player);
+
+        Task<List<Deck>> SelectDecks(int playerId);
     }
 
     public abstract class DataServiceBase
@@ -45,6 +47,7 @@ namespace GayTimer.Services
 
             m_playersPath = Path.Combine(storagePath, nameof(Player));
             m_gamesPath = Path.Combine(storagePath, nameof(Game));
+            m_deckPath = Path.Combine(storagePath, nameof(Deck));
         }
 
         #region Players
@@ -128,6 +131,21 @@ namespace GayTimer.Services
             var data = Serializer.Serialize(m_games);
 
             return Task.Run(() => File.WriteAllText(m_gamesPath, data));
+        }
+
+        #endregion
+
+        #region Decks 
+
+        private List<Deck> m_decks;
+        private readonly string m_deckPath;
+
+        public async Task<List<Deck>> SelectDecks(int playerId)
+        {
+            if (m_decks == null)
+                m_decks = await SelectAll<Deck>($"{m_deckPath}_{playerId}");
+
+            return m_decks.Where(d => d.PlayerId == playerId).ToList();
         }
 
         #endregion

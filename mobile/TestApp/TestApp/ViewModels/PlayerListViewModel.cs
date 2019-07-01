@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GayTimer.Entities;
 using GayTimer.Services;
 using GayTimer.Views;
 using Xamarin.Forms;
+using XF.Material.Forms.Models;
 using XF.Material.Forms.UI.Dialogs;
 
 namespace GayTimer.ViewModels
@@ -21,6 +23,8 @@ namespace GayTimer.ViewModels
             m_detailVm = detailVm;
 
             Init();
+
+            MenuItemCommand =new Command<MaterialMenuResult>(MenuItemSelected);
 
             AddPlayerCommand = new RelayCommand(AddPlayer);
             DeletePlayerCommand = new RelayCommand(DeletePlayer);
@@ -41,6 +45,22 @@ namespace GayTimer.ViewModels
             {
                 m_players = value;
                 NotifyPropertyChanged();
+            }
+        }
+
+        public List<string> Actions { get; } = new List<string>(){ "Update", "Delete" };
+
+        public Command<MaterialMenuResult> MenuItemCommand { get; }
+        
+        private void MenuItemSelected(MaterialMenuResult obj)
+        {
+            if (obj.Index == 0)
+            {
+                UpdatePlayer(obj.Parameter);
+            }
+            else if (obj.Index == 1)
+            {
+                DeletePlayer(obj.Parameter);
             }
         }
 
@@ -88,14 +108,14 @@ namespace GayTimer.ViewModels
 
             Players.Remove(player);
 
-            await MaterialDialog.Instance.SnackbarAsync(message: $"Player {player.Nick} deleted.", actionButtonText: "Got it", msDuration: 3000);
+            await MaterialDialog.Instance.SnackbarAsync(message: $"Player {player.Nick} was deleted.", actionButtonText: "Got it", msDuration: 3000);
         }
 
         private  async void PlayerInserted(PlayerDetailViewModel sender, Player inserted)
         {
             Players.Add(inserted);
 
-            await MaterialDialog.Instance.SnackbarAsync(message: $"Player {inserted.Nick} inserted.", actionButtonText:"Got it", msDuration: 3000);
+            await MaterialDialog.Instance.SnackbarAsync(message: $"Player {inserted.Nick} was inserted.", actionButtonText:"Got it", msDuration: 3000);
         }
     }
 }

@@ -57,6 +57,10 @@ namespace GayTimer
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
+            var exception = (Exception) e.ExceptionObject;
+
+            var st = exception.StackTrace;
+            var msg = exception.Message;
         }
     }
 }

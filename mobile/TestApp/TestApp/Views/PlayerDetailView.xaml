@@ -2,58 +2,80 @@
 <ContentPage x:Class="GayTimer.Views.PlayerDetailView"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:GayTimer.Controls;assembly=GayTimer"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
              xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             xmlns:views="clr-namespace:GayTimer.Views;assembly=GayTimer"
              Title="{Binding Title}"
              d:DataContext="{d:DesignInstance viewModels:PlayerDetailViewModel}"
              mc:Ignorable="d">
-    <ScrollView Padding="6,10">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <ui:MaterialTextField x:Name="NickField"
-                                  Grid.Row="0"
-                                  Grid.Column="0"
-                                  Grid.ColumnSpan="2"
-                                  Placeholder="Nickname"
-                                  Text="{Binding Nick}" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ui:MaterialTextField x:Name="NickField"
+                              Grid.Row="0"
+                              Grid.Column="0"
+                              Grid.ColumnSpan="2"
+                              Placeholder="Nickname"
+                              Text="{Binding Nick}" />
 
-            <Frame Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2">
-                <ListView Header="Decks" ItemsSource="{Binding Decks}">
-                    <ListView.ItemTemplate>
+        <controls:ContentControl Grid.Row="1"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 Margin="4"
+                                 TemplateSelectorContext="{Binding}">
+            <controls:ContentControl.TemplateSelector>
+                <views:DeckTemplateSelector>
+                    <views:DeckTemplateSelector.DecksTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Name}" />
+                            <ui:MaterialCard>
+                                <ListView Header="Decks" ItemsSource="{Binding Decks}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextCell Text="{Binding Name}" />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    <ListView.Footer>
+                                        <ui:MaterialButton ButtonType="Text"
+                                                           Command="{Binding NavigateToDecksCommand}"
+                                                           Text="Show All" />
+                                    </ListView.Footer>
+                                </ListView>
+                            </ui:MaterialCard>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ListView.Footer>
-                        <ui:MaterialButton ButtonType="Text"
-                                           Command="{Binding NavigateToDecksCommand}"
-                                           Text="Show All" />
-                    </ListView.Footer>
-                </ListView>
-            </Frame>
+                    </views:DeckTemplateSelector.DecksTemplate>
+                    <views:DeckTemplateSelector.NoDecksTemplate>
+                        <DataTemplate>
+                            <ui:MaterialCard ClickCommand="{Binding NavigateToDecksCommand}" IsClickable="True">
+                                <StackLayout Orientation="Horizontal">
+                                    <ui:MaterialIcon Source="note_add_24" TintColor="#d81b60" />
+                                    <ui:MaterialLabel Text="Add decks" VerticalOptions="Center" />
+                                </StackLayout>
+                            </ui:MaterialCard>
+                        </DataTemplate>
+                    </views:DeckTemplateSelector.NoDecksTemplate>
+                </views:DeckTemplateSelector>
+            </controls:ContentControl.TemplateSelector>
+        </controls:ContentControl>
 
-            <ui:MaterialButton Grid.Row="2"
-                               Grid.Column="0"
-                               ButtonType="Outlined"
-                               Command="{Binding DiscardCommand}"
-                               Text="Discard" />
-            <ui:MaterialButton Grid.Row="2"
-                               Grid.Column="1"
-                               ButtonType="Flat"
-                               Command="{Binding SaveCommand}"
-                               Text="Save" />
-        </Grid>
-    </ScrollView>
+        <ui:MaterialButton Grid.Row="2"
+                           Grid.Column="0"
+                           ButtonType="Outlined"
+                           Command="{Binding DiscardCommand}"
+                           Text="Discard" />
+        <ui:MaterialButton Grid.Row="2"
+                           Grid.Column="1"
+                           ButtonType="Flat"
+                           Command="{Binding SaveCommand}"
+                           Text="Save" />
+    </Grid>
 </ContentPage>

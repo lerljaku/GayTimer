@@ -44,6 +44,7 @@ namespace TestApp.Droid
                 })
             };
 
+            Window.SetFlags(WindowManagerFlags.KeepScreenOn, WindowManagerFlags.KeepScreenOn);
 
             LoadApplication(app);
         }

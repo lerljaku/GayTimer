@@ -36,6 +36,7 @@
                            Command="{Binding IncrementHealthCommand}" />
 
         <ui:MaterialButton Grid.ColumnSpan="2"
+                           Margin="0,4,0,0"
                            BackgroundColor="Transparent"
                            Command="{Binding SelectPlayerCommand}"
                            HorizontalOptions="Center"
