@@ -26,7 +26,7 @@ namespace GayTimer
             if (!m_viewCache.ContainsKey(viewType))
                 m_viewCache.Add(viewType, new TView());
 
-            var page = m_viewCache[viewType];
+            var page = new TView();// m_viewCache[viewType];
 
             page.BindingContext = sb;
 

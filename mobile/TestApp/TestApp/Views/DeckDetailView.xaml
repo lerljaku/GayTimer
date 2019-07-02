@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="GayTimer.Views.DeckDetailView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+             Title="{Binding Title}"
+             d:DataContext="{d:DesignInstance viewModels:DeckDetailViewModel}"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ui:MaterialTextField x:Name="NameField"
+                              Grid.Row="0"
+                              Grid.Column="0"
+                              Grid.ColumnSpan="2"
+                              Placeholder="Name"
+                              Text="{Binding Name}" />
+        <xfx:XfxComboBox Grid.Row="1"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="2"
+                         ItemsSource="{Binding Commanders}"
+                         Placeholder="Type commander name"
+                         SortingAlgorithm="{Binding SortingAlgorithm}"
+                         Text="{Binding Commander}" />
+        <Editor Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Placeholder="Note"
+                Text="{Binding Note}" />
+
+        <ui:MaterialButton Grid.Row="3"
+                           Grid.Column="0"
+                           ButtonType="Outlined"
+                           Command="{Binding DiscardCommand}"
+                           Text="Discard" />
+        <ui:MaterialButton Grid.Row="3"
+                           Grid.Column="1"
+                           ButtonType="Flat"
+                           Command="{Binding SaveCommand}"
+                           Text="Save" />
+    </Grid>
+</ContentPage>

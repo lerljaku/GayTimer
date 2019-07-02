@@ -8,6 +8,7 @@
              xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
              xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
              xmlns:views="clr-namespace:GayTimer.Views;assembly=GayTimer"
+             x:Name="ContentPage"
              Title="{Binding Title}"
              d:DataContext="{d:DesignInstance viewModels:PlayerDetailViewModel}"
              mc:Ignorable="d">
@@ -31,14 +32,15 @@
         <controls:ContentControl Grid.Row="1"
                                  Grid.Column="0"
                                  Grid.ColumnSpan="2"
-                                 Margin="4"
-                                 TemplateSelectorContext="{Binding}">
+                                 TemplateSelectorContext="{Binding Decks}">
             <controls:ContentControl.TemplateSelector>
                 <views:DeckTemplateSelector>
                     <views:DeckTemplateSelector.DecksTemplate>
                         <DataTemplate>
                             <ui:MaterialCard>
-                                <ListView Header="Decks" ItemsSource="{Binding Decks}">
+                                <ListView Header="Decks"
+                                          ItemsSource="{Binding}"
+                                          SelectionMode="None">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <TextCell Text="{Binding Name}" />
@@ -46,7 +48,7 @@
                                     </ListView.ItemTemplate>
                                     <ListView.Footer>
                                         <ui:MaterialButton ButtonType="Text"
-                                                           Command="{Binding NavigateToDecksCommand}"
+                                                           Command="{Binding Source={x:Reference ContentPage}, Path=BindingContext.NavigateToDecksCommand}"
                                                            Text="Show All" />
                                     </ListView.Footer>
                                 </ListView>
@@ -55,7 +57,7 @@
                     </views:DeckTemplateSelector.DecksTemplate>
                     <views:DeckTemplateSelector.NoDecksTemplate>
                         <DataTemplate>
-                            <ui:MaterialCard ClickCommand="{Binding NavigateToDecksCommand}" IsClickable="True">
+                            <ui:MaterialCard ClickCommand="{Binding Source={x:Reference ContentPage}, Path=BindingContext.NavigateToDecksCommand}" IsClickable="True">
                                 <StackLayout Orientation="Horizontal">
                                     <ui:MaterialIcon Source="note_add_24" TintColor="#d81b60" />
                                     <ui:MaterialLabel Text="Add decks" VerticalOptions="Center" />

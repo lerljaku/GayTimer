@@ -25,6 +25,7 @@ namespace GayTimer.Installer
             builder.RegisterType<GameHistoryViewModel>().SingleInstance();
             builder.RegisterType<GameSummaryViewModel>().SingleInstance();
             builder.RegisterType<PlayerDecksViewModel>().SingleInstance();
+            builder.RegisterType<DeckDetailViewModel>().SingleInstance();
 
             // services
             builder.RegisterType<SerializerProvider>().As<ISerializerProvider>().SingleInstance();

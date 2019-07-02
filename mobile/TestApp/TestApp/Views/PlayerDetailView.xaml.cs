@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -32,9 +33,10 @@ namespace GayTimer.Views
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            var decks = (PlayerDetailViewModel)item;
+            //var vm = (PlayerDetailViewModel)item;
+            var decks = (ObservableCollection<Deck>) item;
 
-            if (decks?.Decks == null || !decks.Decks.Any())
+            if (decks == null || !decks.Any())
                 return NoDecksTemplate;
             else
             {

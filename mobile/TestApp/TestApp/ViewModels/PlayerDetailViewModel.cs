@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using GayTimer.Entities;
 using GayTimer.Events;
@@ -23,14 +25,16 @@ namespace GayTimer.ViewModels
             SaveCommand = new RelayCommand(Save);
             DiscardCommand = new RelayCommand(Discard);
             NavigateToDecksCommand = new RelayCommand(NavigateToDecks);
+
+            MessagingCenter.Subscribe<DeckDetailViewModel, DeckInserted>(this, nameof(DeckInserted), DeckInserted);
         }
 
         public ICommand DiscardCommand { get; }
         public ICommand SaveCommand { get; }
         public ICommand NavigateToDecksCommand { get; }
 
-        private List<Deck> m_decks = new List<Deck>();
-        public List<Deck> Decks
+        private ObservableCollection<Deck> m_decks = new ObservableCollection<Deck>();
+        public ObservableCollection<Deck> Decks
         {
             get => m_decks;
             set
@@ -62,31 +66,46 @@ namespace GayTimer.ViewModels
             }
         }
 
-        public void Init(Player player)
+        public async void Init(Player player)
         {
             m_player = player;
 
             Nick = m_player.Nick;
 
             Title = string.IsNullOrWhiteSpace(player.Nick) ? $"New user" : $"User - {player.Nick}";
+
+            if (player.Id != 0)
+            {
+                var decks = await m_dataService.SelectDecks(player.Id);
+
+                Decks = new ObservableCollection<Deck>(decks.Take(3));
+            }
         }
 
         private async void NavigateToDecks()
         {
+            if (m_player.Id == 0)
+                await m_dataService.Insert(m_player);
+            
             m_playerDecksVm.Init(m_player);
 
             await App.PushAsync<PlayerDecksView>(m_playerDecksVm);
         }
 
-        private void Save()
+        private async void Save()
         {
             m_player.Nick = Nick;
 
-            m_dataService.Insert(m_player);
+            await m_dataService.Insert(m_player);
 
-            App.PopAsync();
+            await App.PopAsync();
 
             MessagingCenter.Send(this, nameof(PlayerInserted), m_player);
+        }
+
+        private void DeckInserted(DeckDetailViewModel senderVm, DeckInserted deckArg)
+        {
+            Decks.Add(deckArg.Deck);
         }
 
         private void Discard()

@@ -13,6 +13,7 @@ using GayTimer.Controls;
 using GayTimer.Installer;
 using GayTimer.ViewModels;
 using GayTimer.Views;
+using TestApp.Droid.Services;
 using Xamarin.Forms;
 using Color = Android.Graphics.Color;
 using Orientation = Android.Content.Res.Orientation;
@@ -30,6 +31,9 @@ namespace TestApp.Droid
             SetStatusBarColor(new Color(8, 127, 35));
 
             base.OnCreate(bundle);
+
+            Forms.SetFlags("CollectionView_Experimental");
+            DependencyService.Register<Commanders_Android>();
 
             Xamarin.Forms.Forms.Init(this, bundle);
             XF.Material.Droid.Material.Init(this, bundle);

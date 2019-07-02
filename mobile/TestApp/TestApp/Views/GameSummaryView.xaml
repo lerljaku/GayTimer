@@ -7,6 +7,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
              xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             x:Name="ContentPage"
              Title="Game summary"
              d:DataContext="{d:DesignInstance viewModels:GameSummaryViewModel}"
              mc:Ignorable="d">
@@ -22,74 +23,35 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+        <CollectionView Grid.ColumnSpan="2" ItemsSource="{Binding PlayerResults}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid d:DataContext="{d:DesignInstance viewModels:PlayerResult}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ui:MaterialButton Grid.Column="0"
+                                           ButtonType="{Binding PlayerButtonType}"
+                                           Command="{Binding Source={x:Reference ContentPage}, Path=BindingContext.SelectPlayerCommand}"
+                                           CommandParameter="{Binding}"
+                                           Text="{Binding Player.Nick}" />
 
-            <!--<ui:MaterialButton Grid.Row="0"
-                               Grid.Column="0"
-                               ButtonType="{Binding PlayerResults[0].PlayerButtonType}"
-                               Command="{Binding SelectPlayerCommand}"
-                               CommandParameter="{Binding PlayerResults[0]}"
-                               Text="{Binding PlayerResults[0].Player.Nick}" />
-            <ui:MaterialButton Grid.Row="0"
-                               Grid.Column="1"
-                               ButtonType="{Binding PlayerResults[0].DeckButtonType}"
-                               Command="{Binding SelectDeckCommand}"
-                               Text="{Binding PlayerResults[0].Deck.Name}" />
-            <ui:MaterialButton Grid.Row="1"
-                               Grid.Column="0"
-                               ButtonType="{Binding PlayerResults[1].PlayerButtonType}"
-                               Command="{Binding SelectPlayerCommand}"
-                               CommandParameter="{Binding PlayerResults[1]}"
-                               Text="{Binding PlayerResults[1].Player.Nick}" />
-            <ui:MaterialButton Grid.Row="1"
-                               Grid.Column="1"
-                               ButtonType="{Binding PlayerResults[1].DeckButtonType}"
-                               Command="{Binding SelectDeckCommand}"
-                               Text="{Binding PlayerResults[1].Deck.Name}" />
-            <ui:MaterialButton Grid.Row="2"
-                               Grid.Column="0"
-                               ButtonType="{Binding PlayerResults[2].PlayerButtonType}"
-                               Command="{Binding SelectPlayerCommand}"
-                               CommandParameter="{Binding PlayerResults[2]}"
-                               IsVisible="{Binding Player3Visible}"
-                               Text="{Binding PlayerResults[2].Player.Nick}" />
-            <ui:MaterialButton Grid.Row="2"
-                               Grid.Column="1"
-                               ButtonType="{Binding PlayerResults[2].DeckButtonType}"
-                               Command="{Binding SelectDeckCommand}"
-                               IsVisible="{Binding Player3Visible}"
-                               Text="{Binding PlayerResults[2].Deck.Name}" />
-            <ui:MaterialButton Grid.Row="3"
-                               Grid.Column="0"
-                               ButtonType="{Binding PlayerResults[3].PlayerButtonType}"
-                               Command="{Binding SelectPlayerCommand}"
-                               CommandParameter="{Binding PlayerResults[3]}"
-                               IsVisible="{Binding Player4Visible}"
-                               Text="{Binding PlayerResults[3].Player.Nick}" />
-            <ui:MaterialButton Grid.Row="3"
-                               Grid.Column="1"
-                               ButtonType="{Binding PlayerResults[3].DeckButtonType}"
-                               Command="{Binding SelectDeckCommand}"
-                               IsVisible="{Binding Player4Visible}"
-                               Text="{Binding PlayerResults[3].Deck.Name}" />-->
-        </Grid>
+                        <ui:MaterialButton Grid.Column="1"
+                                           ButtonType="{Binding DeckButtonType}"
+                                           Command="{Binding Source={x:Reference ContentPage}, Path=BindingContext.SelectDeckCommand}"
+                                           Text="{Binding Deck.Name}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
-        <!--<ui:MaterialButton Grid.Row="1"
+        <ui:MaterialButton Grid.Row="1"
                            Grid.Column="0"
                            Grid.ColumnSpan="2"
                            ButtonType="{Binding WinnersButtonType}"
                            Command="{Binding SelectWinnersCommand}"
-                           Text="{Binding Winners}" />-->
+                           Text="{Binding Winners}" />
 
         <Editor x:Name="NickField"
                 Grid.Row="2"
