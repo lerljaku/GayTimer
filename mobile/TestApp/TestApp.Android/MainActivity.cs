@@ -37,6 +37,7 @@ namespace TestApp.Droid
 
             Xamarin.Forms.Forms.Init(this, bundle);
             XF.Material.Droid.Material.Init(this, bundle);
+            FormsMaterial.Init(this, bundle);
 
             var container = new GayInstaller().Install().Build();
 

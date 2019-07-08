@@ -18,7 +18,7 @@ namespace GayTimer.Services
         Task<List<Game>> SelectGames();
         Task Insert(Game player);
 
-        Task<List<Deck>> SelectDecks(int playerId);
+        Task<List<Deck>> SelectDecks(int? playerId = null);
         Task Insert(Deck deck);
     }
 
@@ -58,10 +58,7 @@ namespace GayTimer.Services
 
         public async Task<List<Player>> SelectPlayers()
         {
-            if (m_players != null)
-                return m_players;
-
-            return m_players = await SelectAll<Player>(m_playersPath);
+            return m_players ?? (m_players = (await SelectAll<Player>(m_playersPath)).OrderBy(d => d.Nick).ToList());
         }
 
         public async Task Insert(Player player)
@@ -72,7 +69,7 @@ namespace GayTimer.Services
             player.Id++;
 
             players.Add(player);
-
+            
             await SavePlayers();
         }
 
@@ -138,20 +135,27 @@ namespace GayTimer.Services
 
         #region Decks 
 
-        private readonly Dictionary<int, List<Deck>> m_decks = new Dictionary<int, List<Deck>>();
+        private Dictionary<int, List<Deck>> m_decks;
         private readonly string m_deckPath;
 
-        public async Task<List<Deck>> SelectDecks(int playerId)
+        public async Task<List<Deck>> SelectDecks(int? playerId = null)
         {
-            if (!m_decks.ContainsKey(playerId))
+            if (m_decks == null)
             {
-                m_decks.Add(playerId, null);
+                var all = await SelectAll<Deck>(m_deckPath);
+
+                m_decks = all.GroupBy(d => d.PlayerId).ToDictionary(d => d.Key, d => d.ToList());
             }
 
-            if (m_decks[playerId] == null)
-                m_decks[playerId] = await SelectAll<Deck>(FormatDeckPath(playerId));
+            if (playerId.HasValue)
+            {
+                if (!m_decks.ContainsKey(playerId.Value))
+                    m_decks.Add(playerId.Value, new List<Deck>());
 
-            return m_decks[playerId].Where(d => d.PlayerId == playerId).ToList();
+                return m_decks[playerId.Value];
+            }
+
+            return m_decks.SelectMany(d => d.Value).ToList();
         }
 
         public async Task Insert(Deck deck)
@@ -163,16 +167,10 @@ namespace GayTimer.Services
 
             m_decks[deck.PlayerId].Add(deck);
 
-            var data = Serializer.Serialize(m_decks[deck.PlayerId]);
+            var data = Serializer.Serialize(m_decks.SelectMany(d => d.Value).ToList());
 
-            await Task.Run(() => File.WriteAllText(FormatDeckPath(deck.PlayerId), data));
+            await Task.Run(() => File.WriteAllText(m_deckPath, data));
         }
-
-        private string FormatDeckPath(int playerId)
-        {
-            return $"{m_deckPath}_{playerId}";
-        }
-
         #endregion
     }
 }

@@ -62,7 +62,7 @@ namespace GayTimer.ViewModels
         public List<string> Commanders => DependencyService.Get<ICommanders>().GetCommanderList();
 
         public Func<string, ICollection<string>, ICollection<string>> SortingAlgorithm { get; } = (text, values) => values
-                .Where(x => x.StartsWith(text, StringComparison.CurrentCultureIgnoreCase))
+                .Where(x => x.ToLower().Contains(text))
                 .OrderBy(x => x)
                 .ToList();
 

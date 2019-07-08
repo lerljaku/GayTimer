@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
+<Application x:Class="GayTimer.App"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:GayTimer.Controls;assembly=GayTimer"
              xmlns:resources="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material.Forms"
-             xmlns:typography="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material.Forms"
-             x:Class="GayTimer.App">
-	<Application.Resources>
-        <!-- Application resource dictionary -->
+             xmlns:typography="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material.Forms">
+    <Application.Resources>
+        <!--  Application resource dictionary  -->
         <!--<typography:MaterialFontConfiguration x:Key="Material.Font"
                                               Body1="{StaticResource FontFamily.RobotoRegular}"
                                               Body2="{StaticResource FontFamily.RobotoRegular}"
@@ -23,6 +23,15 @@
                                               Subtitle2="{StaticResource FontFamily.RobotoMedium}" />-->
         <typography:MaterialFontConfiguration x:Key="Material.Font" />
 
+        <Color x:Key="Secondary">#d81b60</Color>
+        <Color x:Key="SecondaryVariant">#a00037</Color>
+        <Color x:Key="OnPrimary">#000000</Color>
+        <Color x:Key="OnSecondary">#FFFFFF</Color>
+
+        <Style TargetType="Button">
+            <Setter Property="Visual" Value="Material" />
+        </Style>
+
         <resources:MaterialColorConfiguration x:Key="Material.Color"
                                               Background="#EAEAEA"
                                               Error="#B00020"
@@ -33,13 +42,13 @@
                                               OnSurface="#000000"
                                               Primary="#4caf50"
                                               PrimaryVariant="#087f23"
-                                              Secondary="#d81b60"
-                                              SecondaryVariant="#a00037"
+                                              Secondary="{StaticResource Secondary}"
+                                              SecondaryVariant="{StaticResource SecondaryVariant}"
                                               Surface="#FFFFFF" />
 
         <resources:MaterialConfiguration x:Key="Material.Configuration"
-                                    ColorConfiguration="{StaticResource Material.Color}"
-                                    FontConfiguration="{StaticResource Material.Font}" />
+                                         ColorConfiguration="{StaticResource Material.Color}"
+                                         FontConfiguration="{StaticResource Material.Font}" />
 
-	</Application.Resources>
+    </Application.Resources>
 </Application>

@@ -18,7 +18,7 @@ namespace TestApp.Droid.Services
                 {
                     using (var sr = new StreamReader(str))
                     {
-                        m_commanders = sr.ReadToEnd().Split(new string[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList();
+                        m_commanders = sr.ReadToEnd().Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).Select(d => d.Trim()).ToList();
                     }
                 }
             }

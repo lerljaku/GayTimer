@@ -44,13 +44,9 @@
                            VerticalOptions="Start" />
 
         <Button Grid.ColumnSpan="2"
-                Margin="0,0,0,-10"
-                Padding="0"
+                Margin="0,0,0,-4"
                 BackgroundColor="Black"
                 Command="{Binding ToggleTimerCommand}"
-                CornerRadius="5"
-                FontSize="22"
-                HeightRequest="36"
                 HorizontalOptions="Center"
                 Text="{Binding TimeSpent, StringFormat='{}{0:mm\\:ss}'}"
                 TextColor="{Binding IsRunning, Converter={StaticResource IsRunningToColorConverter}}"

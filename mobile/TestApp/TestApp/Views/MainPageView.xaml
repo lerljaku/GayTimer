@@ -11,8 +11,8 @@
              NavigationPage.TitleIconImageSource="hourglass_24"
              mc:Ignorable="d">
     <StackLayout Orientation="Vertical">
-        <Button Command="{Binding NavigateToGameCommand}" Text="Game" />
-        <Button Command="{Binding NavigateToPlayersCommand}" Text="Players" />
-        <Button Command="{Binding NavigateToHistoryCommand}" Text="History" />
+        <Button Command="{Binding NavigateToGameCommand}" ImageSource="hourglass_24" Text="Game" />
+        <Button Command="{Binding NavigateToPlayersCommand}" ImageSource="people" Text="Players" />
+        <Button Command="{Binding NavigateToHistoryCommand}" ImageSource="list" Text="History" />
     </StackLayout>
 </ContentPage>

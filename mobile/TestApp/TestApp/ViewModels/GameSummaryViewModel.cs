@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Input;
 using GayTimer.Entities;
 using GayTimer.Services;
+using Xamarin.Forms;
 using XF.Material.Forms.UI;
 using XF.Material.Forms.UI.Dialogs;
 
@@ -29,9 +30,6 @@ namespace GayTimer.ViewModels
         public ICommand SelectWinnersCommand { get; }
         public ICommand SaveCommand { get; }
         public ICommand DiscardCommand { get; }
-
-        public bool Player3Visible => PlayerResults.Length >= 3;
-        public bool Player4Visible => PlayerResults.Length >= 4;
 
         public string Winners
         {
@@ -65,17 +63,16 @@ namespace GayTimer.ViewModels
                 m_playerResults = value;
                 NotifyPropertyChanged();
                 NotifyPropertyChanged(nameof(Winners));
-                NotifyPropertyChanged(nameof(Player3Visible));
-                NotifyPropertyChanged(nameof(Player4Visible));
                 NotifyPropertyChanged(nameof(WinnersButtonType));
             }
         }
 
         public void Init(IEnumerable<PlayerViewModel> players)
         {
-            PlayerResults = players.Select(p => new PlayerResult()
+            PlayerResults = players.Select((p, i) => new PlayerResult()
             {
                 Player = p.Player,
+                Deck = new Deck(){Name = $"Dick {i}"},
                 TimeSpent = p.TimeSpent,
             }).ToArray();
         }
@@ -97,9 +94,20 @@ namespace GayTimer.ViewModels
             }
         }
 
-        private void SelectDeck(object obj)
+        private async void SelectDeck(object obj)
         {
-            throw new NotImplementedException();
+            var playerResult = (PlayerResult)obj;
+
+            var playerDecks = (await m_dataService.SelectDecks()).OrderByDescending(d => d.PlayerId == playerResult.Player.Id).ThenBy(d => d.Name).ToList();
+
+            if (!playerDecks.Any())
+                return;
+
+            var result = await MaterialDialog.Instance.SelectActionAsync(actions: playerDecks.Select(pd => pd.Name).ToArray());
+            if (result >= 0)
+            {
+                playerResult.Deck = playerDecks.ElementAt(result);
+            }
         }
 
         private async void SelectWinners()
@@ -107,7 +115,9 @@ namespace GayTimer.ViewModels
             var playerNames = PlayerResults.Select(d => d.Player.Nick).ToList();
 
             var result = await MaterialDialog.Instance.SelectChoicesAsync(title: "Select winners", choices: playerNames);
-
+            if (result == null)
+                return;
+            
             for (int i = 0; i < PlayerResults.Length; i++)
             {
                 PlayerResults[i].IsWinner = result.Contains(i);
@@ -117,7 +127,7 @@ namespace GayTimer.ViewModels
             NotifyPropertyChanged(nameof(WinnersButtonType));
         }
 
-        private void Save()
+        private async void Save()
         {
             var game = new Game()
             {
@@ -132,8 +142,11 @@ namespace GayTimer.ViewModels
                 Created = DateTimeOffset.Now,
             };
 
-            m_dataService.Insert(game);
+            await m_dataService.Insert(game);
 
+            await Application.Current.MainPage.NavigationProxy.PopToRootAsync();
+
+            await MaterialDialog.Instance.SnackbarAsync(message: "Game was saved.", actionButtonText: "Got it", msDuration: 3000);
         }
 
         private void Discard()

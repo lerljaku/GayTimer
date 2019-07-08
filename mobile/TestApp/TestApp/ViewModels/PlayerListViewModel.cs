@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using GayTimer.Entities;
 using GayTimer.Services;
@@ -75,7 +76,7 @@ namespace GayTimer.ViewModels
             {
                 var gays = await m_dataService.SelectPlayers();
 
-                Players = new ObservableCollection<Player>(gays);
+                Players = new ObservableCollection<Player>(gays.OrderBy(d => d.Nick));
             }
             catch (Exception e)
             {

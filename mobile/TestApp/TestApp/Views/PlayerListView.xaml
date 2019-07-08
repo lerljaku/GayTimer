@@ -32,15 +32,12 @@
                                                   VerticalOptions="Center" />
 
                                 <ui:MaterialMenuButton Margin="0"
-                                                       ButtonType="Text"
+                                                       ButtonType="Text" HeightRequest="32"
                                                        Choices="{Binding Path=BindingContext.Actions, Source={x:Reference Grid}}"
                                                        Command="{Binding Path=BindingContext.MenuItemCommand, Source={x:Reference Grid}}"
                                                        CommandParameter="{Binding}"
-                                                       CornerRadius="16"
-                                                       HeightRequest="32"
                                                        HorizontalOptions="End"
-                                                       Image="more_vert_24"
-                                                       WidthRequest="32" />
+                                                       Image="more_vert_24"/>
                             </StackLayout>
                         </ui:MaterialCard>
                     </DataTemplate>
@@ -58,14 +55,4 @@
             </ui:MaterialCard>
         </Grid>
     </ScrollView>
-    <!--<ui:MaterialButton Margin="12"
-                           ButtonType="Elevated"
-                           Command="{Binding AddPlayerCommand}"
-                           CornerRadius="32"
-                           FontSize="32"
-                           HeightRequest="64"
-                           HorizontalOptions="End"
-                           Text="+"
-                           VerticalOptions="End"
-                           WidthRequest="64" />-->
 </ContentPage>

@@ -1,49 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage x:Class="GayTimer.Views.GameHistoryView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
-             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
              xmlns:entities="clr-namespace:GayTimer.Entities;assembly=GayTimer"
-             mc:Ignorable="d"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             Title="Game history"
              d:DataContext="{d:DesignInstance viewModels:GameHistoryViewModel}"
-             x:Class="GayTimer.Views.GameHistoryView">
+             mc:Ignorable="d">
     <Grid x:Name="Grid">
-        <ListView ItemsSource="{Binding Players}" SelectionMode="None" HasUnevenRows="True" SeparatorVisibility="None">
-            <ListView.HeaderTemplate>
-                <DataTemplate>
-                    <ui:MaterialLabel Text="Players" TypeScale="H5" Margin="12,4,0,0" />
-                </DataTemplate>
-            </ListView.HeaderTemplate>
+        <ListView HasUnevenRows="True"
+                  ItemsSource="{Binding Games}"
+                  SelectionMode="None"
+                  SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell d:DataContext="{d:DesignInstance entities:Player}">
-                        <ViewCell.ContextActions>
-                            <MenuItem CommandParameter="{Binding}" 
-                                         Command="{Binding Path=BindingContext.DeletePlayerCommand, Source={x:Reference Grid}}"
-                                         Text="Delete" 
-                                         IsDestructive="True" />
-                        </ViewCell.ContextActions>
-                        <ui:MaterialCard Margin="4" 
-                                             IsClickable="True"
-                                             ClickCommandParameter="{Binding}" 
-                                             ClickCommand="{Binding Path=BindingContext.UpdatePlayerCommand, Source={x:Reference Grid}}">
-                            <ui:MaterialLabel Text="{Binding Nick}" TypeScale="Body1" />
-                        </ui:MaterialCard>
+                    <ViewCell d:DataContext="{d:DesignInstance entities:Game}">
+                        <ui:MaterialLabel Text="{Binding Created}" TypeScale="Body1" />
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <ui:MaterialButton Command="{Binding AddPlayerCommand}" 
-                             ButtonType="Elevated" 
-                             Text="+" 
-                             FontSize="32"
-                             WidthRequest="64"
-                             HeightRequest="64" Margin="12"
-                             HorizontalOptions="End"
-                             VerticalOptions="End" 
-                             CornerRadius="32" />
+        <ui:MaterialButton Margin="12"
+                           ButtonType="Elevated"
+                           Command="{Binding AddGameCommand}"
+                           CornerRadius="32"
+                           FontSize="32"
+                           HeightRequest="64"
+                           HorizontalOptions="End"
+                           Text="+"
+                           VerticalOptions="End"
+                           WidthRequest="64" />
     </Grid>
 </ContentPage>
