@@ -6,7 +6,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
              xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
-             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
              Title="{Binding Title}"
              d:DataContext="{d:DesignInstance viewModels:DeckDetailViewModel}"
              mc:Ignorable="d">
@@ -28,13 +27,7 @@
                               Grid.ColumnSpan="2"
                               Placeholder="Name"
                               Text="{Binding Name}" />
-        <xfx:XfxComboBox Grid.Row="1"
-                         Grid.Column="0"
-                         Grid.ColumnSpan="2"
-                         ItemsSource="{Binding Commanders}"
-                         Placeholder="Type commander name"
-                         SortingAlgorithm="{Binding SortingAlgorithm}"
-                         Text="{Binding Commander}" />
+
         <Editor Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
