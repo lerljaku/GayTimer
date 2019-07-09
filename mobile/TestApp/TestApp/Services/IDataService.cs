@@ -160,9 +160,9 @@ namespace GayTimer.Services
 
         public async Task Insert(Deck deck)
         {
-            var playerDecks = await SelectDecks(deck.PlayerId);
+            var decks = await SelectDecks();
 
-            deck.Id = playerDecks.Any() ? playerDecks.Max(d => d.Id) : 0;
+            deck.Id = decks.Any() ? decks.Max(d => d.Id) : 0;
             deck.Id++;
 
             m_decks[deck.PlayerId].Add(deck);

@@ -80,6 +80,7 @@ namespace GayTimer.ViewModels
 
                 Decks = new ObservableCollection<Deck>(decks.Take(3));
             }
+            else Decks = new ObservableCollection<Deck>();
         }
 
         private async void NavigateToDecks()
@@ -106,6 +107,8 @@ namespace GayTimer.ViewModels
         private void DeckInserted(DeckDetailViewModel senderVm, DeckInserted deckArg)
         {
             Decks.Add(deckArg.Deck);
+
+            Decks = new ObservableCollection<Deck>(Decks);//notifikace
         }
 
         private void Discard()

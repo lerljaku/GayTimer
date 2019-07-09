@@ -13,13 +13,10 @@
     <Grid x:Name="Grid">
         <ListView HasUnevenRows="True"
                   ItemsSource="{Binding Games}"
-                  SelectionMode="None"
-                  SeparatorVisibility="None">
+                  SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell d:DataContext="{d:DesignInstance entities:Game}">
-                        <ui:MaterialLabel Text="{Binding Created}" TypeScale="Body1" />
-                    </ViewCell>
+                    <TextCell Detail="{Binding PlayersStr}" Text="{Binding CreatedStr}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

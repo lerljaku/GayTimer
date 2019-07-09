@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using GayTimer.Entities;
 using GayTimer.Events;
 using GayTimer.Services;
@@ -84,8 +85,7 @@ namespace GayTimer.ViewModels
 
             m_gamePageVm.AllPlayers = players;
 
-            App.PopAsync();
-            await App.PushAsync<GamePageView>(m_gamePageVm);
+            await Task.WhenAll(App.PopAsync(), App.PushAsync<GamePageView>(m_gamePageVm));
         }
     }
 }

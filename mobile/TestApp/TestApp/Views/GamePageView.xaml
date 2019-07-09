@@ -22,8 +22,11 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Master">
             <StackLayout Orientation="Vertical">
-                <Button Text="Load" Command="{Binding LoadGameCommand}" />
-                <Button Text="Exit" Command="{Binding ExitGameCommand}" />
+                <Grid>
+                    <Image Source="logoHeader" />
+                </Grid>
+                <Button Command="{Binding LoadGameCommand}" Text="Load" />
+                <Button Command="{Binding ExitGameCommand}" Text="Exit" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
