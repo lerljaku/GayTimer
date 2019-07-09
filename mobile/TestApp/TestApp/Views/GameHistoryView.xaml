@@ -16,7 +16,10 @@
                   SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Detail="{Binding PlayersStr}" Text="{Binding CreatedStr}" />
+                    <TextCell Command="{Binding Path=BindingContext.GameDetailCommand, Source={x:Reference Grid}}"
+                              CommandParameter="{Binding}"
+                              Detail="{Binding PlayersStr}"
+                              Text="{Binding CreatedStr}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

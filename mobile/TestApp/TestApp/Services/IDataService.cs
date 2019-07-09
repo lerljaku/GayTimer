@@ -17,6 +17,7 @@ namespace GayTimer.Services
 
         Task<List<Game>> SelectGames();
         Task Insert(Game player);
+        Task Update(Game player);
 
         Task<List<Deck>> SelectDecks(int? playerId = null);
         Task Insert(Deck deck);
@@ -119,6 +120,15 @@ namespace GayTimer.Services
             game.Id = games.Any() ? games.Max(d => d.Id) : 0;
             game.Id++;
 
+            m_games.Add(game);
+
+            await SaveGames();
+        }
+
+        public async Task Update(Game game)
+        {
+            var toUpdate = m_games.First(d => d.Id == game.Id);
+            m_games.Remove(toUpdate);
             m_games.Add(game);
 
             await SaveGames();

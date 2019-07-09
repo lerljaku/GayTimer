@@ -67,13 +67,33 @@ namespace GayTimer.ViewModels
             }
         }
 
+        private Game m_game;
+
         public void Init(IEnumerable<PlayerViewModel> players)
         {
+            m_game = new Game {Created = DateTimeOffset.Now};
+
             PlayerResults = players.Select((p, i) => new PlayerResult()
             {
                 Player = p.Player,
                 Deck = new Deck(){Name = $"Dick {i}"},
                 TimeSpent = p.TimeSpent,
+            }).ToArray();
+        }
+
+        public async void Init(Game game)
+        {
+            m_game = game;
+
+            var players = await m_dataService.SelectPlayers();
+            var decks = await m_dataService.SelectDecks();
+
+            PlayerResults = game.Players.Select(p => new PlayerResult()
+            {
+                Deck = decks.FirstOrDefault(d => d.Id == p.DeckId),
+                Player = players.FirstOrDefault(d => d.Id == p.PlayerId),
+                TimeSpent = p.TimeSpent,
+                IsWinner = p.IsWinner,
             }).ToArray();
         }
 
@@ -129,20 +149,19 @@ namespace GayTimer.ViewModels
 
         private async void Save()
         {
-            var game = new Game()
+            m_game.Note = Note;
+            m_game.Players = PlayerResults.Select(d => new PlayerToGame()
             {
-                Players = PlayerResults.Select(d => new PlayerToGame()
-                {
-                    DeckId = d.Deck.Id,
-                    IsWinner = d.IsWinner,
-                    PlayerId = d.Player.Id,
-                    TimeSpent = d.TimeSpent,
-                }).ToList(),
-                Note = Note,
-                Created = DateTimeOffset.Now,
-            };
+                DeckId = d.Deck.Id,
+                IsWinner = d.IsWinner,
+                PlayerId = d.Player.Id,
+                TimeSpent = d.TimeSpent,
+            }).ToList();
 
-            await m_dataService.Insert(game);
+            if (m_game.Id == 0)
+                await m_dataService.Insert(m_game);
+            else
+                await m_dataService.Update(m_game);
 
             await Application.Current.MainPage.NavigationProxy.PopToRootAsync();
 

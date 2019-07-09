@@ -5,6 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Bootstrapper\**" />
+    <Compile Remove="Commands\**" />
+    <Compile Remove="MenuItems\**" />
+    <EmbeddedResource Remove="Bootstrapper\**" />
+    <EmbeddedResource Remove="Commands\**" />
+    <EmbeddedResource Remove="MenuItems\**" />
+    <None Remove="Bootstrapper\**" />
+    <None Remove="Commands\**" />
+    <None Remove="MenuItems\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.2" />
     <PackageReference Include="Microsoft.AppCenter.Distribute" Version="2.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
@@ -70,12 +82,6 @@
     <EmbeddedResource Update="Views\WelcomePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Bootstrapper\" />
-    <Folder Include="Commands\" />
-    <Folder Include="MenuItems\" />
   </ItemGroup>
 
   <ItemGroup>
