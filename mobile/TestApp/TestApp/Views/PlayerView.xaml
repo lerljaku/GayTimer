@@ -21,10 +21,29 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <ui:MaterialLabel Grid.ColumnSpan="2"
+        <ui:MaterialLabel Grid.Column="0"
+                          Margin="6,0"
+                          HorizontalOptions="Start"
+                          Opacity="0.4"
+                          Text="-"
+                          TextColor="{StaticResource OnSecondary}"
+                          TypeScale="H4"
+                          VerticalOptions="Center" />
+        <ui:MaterialLabel Grid.Column="1"
+                          Margin="6,0"
+                          HorizontalOptions="End"
+                          Opacity="0.4"
+                          Text="+"
+                          TextColor="{StaticResource OnSecondary}"
+                          TypeScale="H4"
+                          VerticalOptions="Center" />
+
+        <ui:MaterialLabel Grid.Row="0"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="2"
                           HorizontalTextAlignment="Center"
                           Text="{Binding Health}"
-                          TextColor="White"
+                          TextColor="{StaticResource OnSecondary}"
                           TypeScale="H1"
                           VerticalTextAlignment="Center" />
 
@@ -35,7 +54,9 @@
                            BackgroundColor="Transparent"
                            Command="{Binding IncrementHealthCommand}" />
 
-        <ui:MaterialButton Grid.ColumnSpan="2"
+        <ui:MaterialButton Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
                            Margin="0,4,0,0"
                            BackgroundColor="Transparent"
                            Command="{Binding SelectPlayerCommand}"
@@ -43,7 +64,9 @@
                            Text="{Binding Nick}"
                            VerticalOptions="Start" />
 
-        <Button Grid.ColumnSpan="2"
+        <Button Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Margin="0,0,0,-4"
                 BackgroundColor="Black"
                 Command="{Binding ToggleTimerCommand}"
