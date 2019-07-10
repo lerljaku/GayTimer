@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Autofac;
+using GayTimer.Entities;
 using GayTimer.Services;
 using GayTimer.ViewModels;
 
@@ -10,6 +11,8 @@ namespace GayTimer.Installer
 {
     public class GayInstaller
     {
+        private static string DbPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3");
+
         public ContainerBuilder Install()
         {
             var builder = new ContainerBuilder();
@@ -37,7 +40,7 @@ namespace GayTimer.Installer
 
 
             // dao
-            builder.RegisterType<DataService>().As<IDataService>().SingleInstance();
+            builder.RegisterType<SqlDataService>().As<IDataService>().WithParameter("databasePath", DbPath).SingleInstance();
 
             return builder;
         }

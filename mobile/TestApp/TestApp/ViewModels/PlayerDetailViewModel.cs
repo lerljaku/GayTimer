@@ -86,7 +86,7 @@ namespace GayTimer.ViewModels
         private async void NavigateToDecks()
         {
             if (m_player.Id == 0)
-                await m_dataService.Insert(m_player);
+                await m_dataService.SaveAsync(m_player);
             
             m_playerDecksVm.Init(m_player);
 
@@ -97,7 +97,7 @@ namespace GayTimer.ViewModels
         {
             m_player.Nick = Nick;
 
-            await m_dataService.Insert(m_player);
+            await m_dataService.SaveAsync(m_player);
 
             await App.PopAsync();
 

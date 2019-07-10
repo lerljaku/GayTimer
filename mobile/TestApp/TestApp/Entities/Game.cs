@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+using SQLite;
 
 namespace GayTimer.Entities
 {
@@ -9,6 +8,7 @@ namespace GayTimer.Entities
     {
         public string Note { get; set; }
 
+        [Ignore]
         public List<PlayerToGame> Players { get; set; }
 
         public DateTimeOffset Created { get; set; }
@@ -16,6 +16,8 @@ namespace GayTimer.Entities
 
     public class PlayerToGame
     {
+        public int GameId { get; set; }
+
         public int PlayerId { get; set; }
 
         public TimeSpan TimeSpent { get; set; }

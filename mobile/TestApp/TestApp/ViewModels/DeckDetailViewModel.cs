@@ -78,16 +78,16 @@ namespace GayTimer.ViewModels
             Title = $"Deck {Name} ({player.Nick})";
         }
 
-        private void Save()
+        private async void Save()
         {
             m_deck.Name = Name;
             m_deck.Commander = Commander;
             m_deck.Note = Note;
             m_deck.PlayerId = m_player.Id;
 
-            m_dataService.Insert(m_deck);
+            await m_dataService.SaveAsync(m_deck);
 
-            App.PopAsync();
+            await App.PopAsync();
 
             MessagingCenter.Send(this, nameof(DeckInserted), new DeckInserted(m_deck));
         }
