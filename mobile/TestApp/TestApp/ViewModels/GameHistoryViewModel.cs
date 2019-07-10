@@ -21,10 +21,12 @@ namespace GayTimer.ViewModels
             m_gameSummaryVm = gameSummaryVm;
 
             AddGameCommand = new RelayCommand(AddGame);
+            DeleteGameCommand = new RelayCommand(DeleteGame);
             GameDetailCommand = new RelayCommand(GameDetail);
         }
 
         public ICommand AddGameCommand { get; }
+        public ICommand DeleteGameCommand { get; }
         public ICommand GameDetailCommand { get; }
 
         private ObservableCollection<GameWrapper> m_games = new ObservableCollection<GameWrapper>();
@@ -50,6 +52,15 @@ namespace GayTimer.ViewModels
 
         private void AddGame()
         {
+        }
+
+        private async void DeleteGame(object arg)
+        {
+            var game = (GameWrapper)arg;
+
+            await m_dataService.Delete(game.Game);
+
+            Games.RemoveAt(Games.IndexOf(game));
         }
 
         private async void GameDetail(object arg)

@@ -19,7 +19,13 @@
                     <TextCell Command="{Binding Path=BindingContext.GameDetailCommand, Source={x:Reference Grid}}"
                               CommandParameter="{Binding}"
                               Detail="{Binding PlayersStr}"
-                              Text="{Binding CreatedStr}" />
+                              Text="{Binding CreatedStr}">
+                        <TextCell.ContextActions>
+                            <MenuItem Command="{Binding Source={x:Reference Grid}, Path=BindingContext.DeleteGameCommand}"
+                                      CommandParameter="{Binding}"
+                                      Text="Delete" />
+                        </TextCell.ContextActions>
+                    </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
