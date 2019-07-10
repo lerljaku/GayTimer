@@ -17,15 +17,15 @@ namespace GayTimer.ViewModels
         private readonly GamePageViewModel m_gamePageVm;
         private readonly SelectLifeTotalViewModel m_selectLifeTotalVm;
         private readonly SelectPlayerCountViewModel m_selectPlayerCntVm;
-        private readonly IDataService m_dataService;
+        private readonly ISelectPlayer m_playerSelector;
 
         public NewGameViewModel(GamePageViewModel gamePageVm, SelectLifeTotalViewModel selectLifeTotalVm, 
-            SelectPlayerCountViewModel selectPlayerCntVm, IDataService dataService)
+            SelectPlayerCountViewModel selectPlayerCntVm, ISelectPlayer playerSelector)
         {
             m_gamePageVm = gamePageVm;
             m_selectLifeTotalVm = selectLifeTotalVm;
             m_selectPlayerCntVm = selectPlayerCntVm;
-            m_dataService = dataService;
+            m_playerSelector = playerSelector;
 
             MessagingCenter.Subscribe<SelectPlayerCountViewModel, PlayerCountSelected>(this, nameof(Events.PlayerCountSelected), PlayerCountSelected);
             MessagingCenter.Subscribe<SelectLifeTotalViewModel, LifeTotalSelected>(this, nameof(Events.LifeTotalSelected), LifeTotalSelected);
@@ -78,7 +78,7 @@ namespace GayTimer.ViewModels
 
         private async void Apply()
         {
-            var players = Enumerable.Range(0, m_playerCount).Select(d => new PlayerViewModel(m_dataService, new Player(){Nick = $"gay {d}"})
+            var players = Enumerable.Range(0, m_playerCount).Select(i => new PlayerViewModel(m_playerSelector, Player.Dummy(i))
             {
                 Health = m_startingLifeTotal,
             }).ToArray();

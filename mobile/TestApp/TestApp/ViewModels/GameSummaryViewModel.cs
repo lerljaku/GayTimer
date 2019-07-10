@@ -56,7 +56,7 @@ namespace GayTimer.ViewModels
             }
         }
         
-        private PlayerResult[] m_playerResults;
+        private PlayerResult[] m_playerResults = new PlayerResult[0];
         public PlayerResult[] PlayerResults
         {
             get => m_playerResults;
@@ -78,7 +78,7 @@ namespace GayTimer.ViewModels
             PlayerResults = players.Select((p, i) => new PlayerResult()
             {
                 Player = p.Player,
-                Deck = new Deck(){Name = $"Dick {i}"},
+                Deck = Deck.Dummy(i),
                 TimeSpent = p.TimeSpent,
             }).ToArray();
         }
@@ -90,10 +90,10 @@ namespace GayTimer.ViewModels
             var players = await m_dataService.SelectPlayers();
             var decks = await m_dataService.SelectDecks();
 
-            PlayerResults = game.Players.Select(p => new PlayerResult()
+            PlayerResults = game.Players.Select((p, i) => new PlayerResult()
             {
-                Deck = decks.FirstOrDefault(d => d.Id == p.DeckId),
-                Player = players.FirstOrDefault(d => d.Id == p.PlayerId),
+                Deck = decks.FirstOrDefault(d => d.Id == p.DeckId) ?? Deck.Dummy(i),
+                Player = players.FirstOrDefault(d => d.Id == p.PlayerId) ?? Player.Dummy(i),
                 TimeSpent = p.TimeSpent,
                 IsWinner = p.IsWinner,
             }).ToArray();
@@ -114,7 +114,10 @@ namespace GayTimer.ViewModels
             var playerDecks = (await m_dataService.SelectDecks()).OrderByDescending(d => d.PlayerId == playerResult.Player.Id).ThenBy(d => d.Name).ToList();
 
             if (!playerDecks.Any())
+            {
+                await MaterialDialog.Instance.SnackbarAsync(message: "There are no deck to chose from.", actionButtonText: "Got it", msDuration: 3000);
                 return;
+            }
 
             var result = await MaterialDialog.Instance.SelectActionAsync(actions: playerDecks.Select(pd => pd.Name).ToArray());
             if (result >= 0)
@@ -151,10 +154,7 @@ namespace GayTimer.ViewModels
                 TimeSpent = d.TimeSpent,
             }).ToList();
 
-            if (m_game.Id == 0)
-                await m_dataService.Insert(m_game);
-            else
-                await m_dataService.Update(m_game);
+            await m_dataService.SaveAsync(m_game);
 
             await Application.Current.MainPage.NavigationProxy.PopToRootAsync();
 
