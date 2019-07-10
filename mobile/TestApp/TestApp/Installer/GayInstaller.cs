@@ -33,6 +33,8 @@ namespace GayTimer.Installer
             builder.RegisterType<CurrentUser>().As<ICurrentUser>().SingleInstance();
             builder.RegisterType<AppContentService>().As<IAppContentService>().SingleInstance();
             builder.RegisterType<ErrorService>().As<IErrorService>().SingleInstance();
+            builder.RegisterType<PlayerSelector>().As<ISelectPlayer>().SingleInstance();
+
 
             // dao
             builder.RegisterType<DataService>().As<IDataService>().SingleInstance();

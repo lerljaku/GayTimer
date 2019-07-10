@@ -13,10 +13,12 @@ namespace GayTimer.ViewModels
     public class GameSummaryViewModel : ScreenBase
     {
         private readonly IDataService m_dataService;
+        private readonly ISelectPlayer m_playerSelector;
 
-        public GameSummaryViewModel(IDataService dataService)
+        public GameSummaryViewModel(IDataService dataService, ISelectPlayer playerSelector)
         {
             m_dataService = dataService;
+            m_playerSelector = playerSelector;
 
             SelectWinnersCommand = new RelayCommand(SelectWinners);
             SaveCommand = new RelayCommand(Save);
@@ -101,17 +103,8 @@ namespace GayTimer.ViewModels
         {
             var playerResult = (PlayerResult) obj;
 
-            var players = await m_dataService.SelectPlayers();
-
-            //Create actions
-            var actions = players.Select(d => d.Nick).ToArray();
-
-            //Show simple dialog
-            var result = await MaterialDialog.Instance.SelectActionAsync(actions: actions);
-            if (result >= 0)
-            {
-                playerResult.Player = players.ElementAt(result);
-            }
+            if (await m_playerSelector.Start())
+                playerResult.Player = m_playerSelector.Selected;
         }
 
         private async void SelectDeck(object obj)

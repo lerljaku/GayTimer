@@ -13,15 +13,15 @@ namespace GayTimer.ViewModels
 
     public class PlayerViewModel : ScreenBase
     {
-        private readonly IDataService m_dataService;
+        private readonly ISelectPlayer m_playerSelector;
         private const int Miliseconds = 1000;
         private readonly Timer m_timer;
         private bool m_isRunning;
 
-        public PlayerViewModel(IDataService dataService, Player player)
+        public PlayerViewModel(ISelectPlayer playerSelector, Player player)
         {
             Player = player;
-            m_dataService = dataService;
+            m_playerSelector = playerSelector;
             m_timer = new Timer(IncrementTime);
 
             IncrementHealthCommand = new RelayCommand(IncrementHealth);
@@ -116,16 +116,9 @@ namespace GayTimer.ViewModels
 
         private async void SelectPlayer()
         {
-            var players = await m_dataService.SelectPlayers();
-
-            //Create actions
-            var actions = players.Select(d => d.Nick).ToArray();
-
-            //Show simple dialog
-            var result = await MaterialDialog.Instance.SelectActionAsync(actions: actions);
-            if (result >= 0)
+            if (await m_playerSelector.Start())
             {
-                Player = players.ElementAt(result);
+                Player = m_playerSelector.Selected;
                 NotifyPropertyChanged(nameof(Nick));
             }
         }
