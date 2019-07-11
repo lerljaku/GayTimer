@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="GayTimer.Views.StatisticsView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dataGrid="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+             xmlns:viewModels="clr-namespace:GayTimer.ViewModels;assembly=GayTimer"
+             Title="Statistics"
+             d:DataContext="{d:DesignInstance viewModels:StatisticsViewModel}"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackLayout Orientation="Horizontal">
+            <Picker ItemDisplayBinding="{Binding Nick}"
+                    ItemsSource="{Binding Players}"
+                    SelectedItem="{Binding SelectedPlayer}"
+                    WidthRequest="80" />
+            <Picker ItemsSource="{Binding Froms}" SelectedItem="{Binding SelectedFrom}" />
+            <ui:MaterialButton Command="{Binding SelectPlayerCountCommand}" Text="{Binding PlayerCountsStr}" />
+            <ui:MaterialIconButton Command="{Binding ClearFilterCommand}" Image="outline_clear_white_24" />
+        </StackLayout>
+
+        <dataGrid:DataGrid Grid.Row="1" IsRefreshing="{Binding IsBusy}"
+                           BorderColor="#CCCCCC"
+                           HeaderBackground="#E0E6F8"
+                           HeaderHeight="32"
+                           ItemsSource="{Binding Ratings}"
+                           SelectionEnabled="False">
+            <dataGrid:DataGrid.Columns>
+                <dataGrid:DataGridColumn Title="Gay" PropertyName="PlayerName" />
+                <dataGrid:DataGridColumn Title="Deck" PropertyName="DeckName" />
+                <dataGrid:DataGridColumn Title="Games"
+                                         Width="0.7*"
+                                         PropertyName="GamesCount" />
+                <dataGrid:DataGridColumn Title="Rating"
+                                         Width="0.7*"
+                                         PropertyName="Rating"
+                                         StringFormat="{}{0:P}" />
+            </dataGrid:DataGrid.Columns>
+            <dataGrid:DataGrid.RowsBackgroundColorPalette>
+                <dataGrid:PaletteCollection>
+                    <Color>#F2F2F2</Color>
+                    <Color>#FFFFFF</Color>
+                </dataGrid:PaletteCollection>
+            </dataGrid:DataGrid.RowsBackgroundColorPalette>
+        </dataGrid:DataGrid>
+    </Grid>
+</ContentPage>

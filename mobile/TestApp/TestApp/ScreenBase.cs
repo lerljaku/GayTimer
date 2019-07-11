@@ -10,7 +10,33 @@ namespace GayTimer
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Title { get; set; }
+        private string m_title;
+        public string Title
+        {
+            get => m_title;
+            set
+            {
+                if (m_title == value)
+                    return;
+
+                m_title = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private bool m_isBusy;
+        public bool IsBusy
+        {
+            get => m_isBusy;
+            set
+            {
+                if (m_isBusy == value)
+                    return;
+                
+                m_isBusy = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         protected void NotifyPropertyChanged([CallerMemberName]string propertyName = "")
         {

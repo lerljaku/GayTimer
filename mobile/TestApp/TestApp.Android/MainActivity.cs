@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.IO;
 using Android.App;
 using Android.Content.PM;
 using Android.Content.Res;
@@ -11,6 +11,7 @@ using Autofac;
 using GayTimer;
 using GayTimer.Controls;
 using GayTimer.Installer;
+using GayTimer.Services;
 using GayTimer.ViewModels;
 using GayTimer.Views;
 using TestApp.Droid.Services;
@@ -23,6 +24,8 @@ namespace TestApp.Droid
     [Activity(Label = "TestApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        private string m_imported = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "importedFlag");
+
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -41,6 +44,19 @@ namespace TestApp.Droid
 
             var container = new GayInstaller().Install().Build();
 
+            if (!File.Exists(m_imported))
+            {
+                var ds = container.Resolve<IDataService>();
+
+                var importP = new Players_Android();
+                var importD = new GayRate_Android();
+
+                importP.ImportPlayers(ds).Wait();
+                importD.GetGayRate(ds);
+
+                File.Create(m_imported);
+            }
+            
             var app = new App
             {
                 MainPage = new NavigationPage(new MainPageView()

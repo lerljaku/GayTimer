@@ -14,7 +14,7 @@ namespace GayTimer.Services
         Task<int> SaveAsync(Player player);
         Task<int> Delete(Player player);
 
-        Task<List<Game>> SelectGames();
+        Task<List<Game>> SelectGames(int? playerId = null);
         Task SaveAsync(Game game);
         Task Delete(Game game);
 

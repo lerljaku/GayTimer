@@ -36,11 +36,16 @@ namespace GayTimer.Entities
             return player.Id == 0 ? InsertAsync(player) : UpdateAsync(player);
         }
         
-        public async Task<List<Game>> SelectGames()
+        public async Task<List<Game>> SelectGames(int? playerId = null)
         {
             var games = await Table<Game>().ToListAsync();
 
-            var players = await Table<PlayerToGame>().ToListAsync();
+            var query = Table<PlayerToGame>();
+
+            if (playerId.HasValue)
+                query = query.Where(d => d.PlayerId == playerId.Value);
+
+            var players = await query.ToListAsync();
 
             foreach (var game in games)
             {

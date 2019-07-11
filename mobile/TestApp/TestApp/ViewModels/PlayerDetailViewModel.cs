@@ -78,7 +78,7 @@ namespace GayTimer.ViewModels
             {
                 var decks = await m_dataService.SelectDecks(player.Id);
 
-                Decks = new ObservableCollection<Deck>(decks.Take(3));
+                Decks = new ObservableCollection<Deck>(decks.OrderByDescending(d => d.Id).Take(3));
             }
             else Decks = new ObservableCollection<Deck>();
         }

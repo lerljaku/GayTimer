@@ -24,13 +24,11 @@
         <ui:MaterialLabel Grid.Column="0"
                           Margin="6,0"
                           HorizontalOptions="Start"
-                          Opacity="0.4"
                           Text="-"
                           TextColor="{StaticResource OnSecondary}"
                           TypeScale="H4"
                           VerticalOptions="Center" />
         <ui:MaterialLabel Grid.Column="1"
-                          Margin="6,0"
                           HorizontalOptions="End"
                           Opacity="0.4"
                           Text="+"
@@ -47,7 +45,7 @@
                           TypeScale="H1"
                           VerticalTextAlignment="Center" />
 
-        <ui:MaterialButton Grid.Column="0"
+        <ui:MaterialButton Grid.Column="0" 
                            BackgroundColor="Transparent"
                            Command="{Binding DecrementHealthCommand}" />
         <ui:MaterialButton Grid.Column="1"

@@ -11,7 +11,7 @@ namespace GayTimer.Installer
 {
     public class GayInstaller
     {
-        private static string DbPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3");
+        private static string DbPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MtgCLockSQLite.db3");
 
         public ContainerBuilder Install()
         {
@@ -29,6 +29,7 @@ namespace GayTimer.Installer
             builder.RegisterType<GameSummaryViewModel>().SingleInstance();
             builder.RegisterType<PlayerDecksViewModel>().SingleInstance();
             builder.RegisterType<DeckDetailViewModel>().SingleInstance();
+            builder.RegisterType<StatisticsViewModel>().SingleInstance();
 
             // services
             builder.RegisterType<SerializerProvider>().As<ISerializerProvider>().SingleInstance();

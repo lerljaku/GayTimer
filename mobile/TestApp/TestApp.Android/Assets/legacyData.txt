@@ -1,0 +1,199 @@
+3.12.2017;4;Mike;Marchesa;Mike;Marchesa;Mira;Teferi;Rene;Meren;Vinni;Sram
+3.12.2017;3;Vinni;Sram;Mike;Karametra;Robert;Lyzolda;Vinni;Sram;;
+4.12.2017;4;Vinni;Mairsil;Mike;Marchesa;Ollie;Sisay;Robert;Lyzolda;Vinni;Mairsil
+4.12.2017;4;Vinni;Sram;Mike;Marchesa;Ollie;Gonti;Rene;Scarab God;Vinni;Sram
+4.12.2017;4;Robert;Lyzolda;Vinni;Arahbo;Otto;Glissa;Chobot;GayBros;Chobot;GayBros
+4.12.2017;4;Rene;Ulasht;Mike;Marchesa;Ollie;Lovissa;Jerry;Ulrich;Rene;Ulasht
+6.12.2017;3;Asyd;Gahiji;Ollie;Lovissa;Luky;Roon;Asyd;Gahiji;;
+6.12.2017;4;Vojta;Grenzo;Ollie;Gonti;Luky;Roon;Asyd;Brago;Vojta;Grenzo
+6.12.2017;3;Rene;Ulasht;Ollie;Lovissa;Vojta;Edgar;Rene;Ulasht;;
+6.12.2017;3;Rene;Ulasht;Ollie;Lovissa;Vojta;Edgar;Rene;Ulasht;;
+8.12.2017;4;Otto;Sliver overlord;Rene;Kitsune;Otto;Sliver overlord;Malej Kuba;Obzedat;Vojta;Progenitus
+8.12.2017;3;Rene;Ulasht;Rene;Ulasht;Vojta;Progenitus;Otto;Ayili;;
+8.12.2017;5;Otto;Jhoira;Rene;Meren;Vojta;Grenzo;Malej Kuba;Karador;Vinni;Sram
+8.12.2017;5;Malej Kuba;Narset;Rene;Meren;Vojta;Grenzo;Malej Kuba;Narset;Vinni;Sram
+10.12.2017;3;Malej Kuba;Polukranos;Rene;Ulasht;Luky;Crosis;Malej Kuba;Polukranos;;
+10.12.2017;3;Malej Kuba;Zur;Rene;Ulasht;Luky;Roon;Malej Kuba;Zur;;
+10.12.2017;4;Rene;Rota;Rene;Rota;Luky;Roon;Malej Kuba;Yidris;Chobot;GayBros
+10.12.2017;4;Rene;Azusa;Rene;Azusa;Luky;Crosis;Malej Kuba;Jeleva;Chobot;GayBros
+10.12.2017;3;Luky;Roon;Luky;Roon;Chobot;GayBros;Malej Kuba;Jeleva;;
+11.12.2017;4;Mike;Marchesa;Mike;Marchesa;Rene;Vhati;Robert;Lyzolda;Pepa;Thada Adel
+13.12.2017;3;Vinni;Sram;Ollie;Neheb;Mike;Marchesa;Vinni;Sram;;
+13.12.2017;3;Ollie;Gonti;Ollie;Gonti;Vinni;Sram;Mike;Marchesa;;
+13.12.2017;3;Mike;Uril;Vinni;Mairsil;Ollie;Lovissa;Mike;Uril;;
+13.12.2017;4;Mike;Marchesa;Rene;Ulasht;Vinni;Mathas;Ollie;Rakdos;Mike;Marchesa
+15.12.2017;5;Malej Kuba;Urabrask;Rene;Tymna Ravos;Vinni;Ramos;Jerry;Tresserhorn;Ollie;Lovissa
+15.12.2017;3;Vinni;Ramos;Vinni;Ramos;Rene;Vhati;Malej Kuba;Urabrask;;
+15.12.2017;4;Vinni;Sram;Vinni;Sram;Ollie;Safi-O;Rene;Azusa;Malej Kuba;Selvala
+15.12.2017;4;Rene;Ulasht;Rene;Ulasht;Ollie;Rakdos;Malej Kuba;Geth;Luky;Crosis
+15.12.2017;3;Ollie;Lovissa;Jerry;Hapatra;Ollie;Lovissa;Asyd;Sigarda;;
+15.12.2017;3;Luky;Roon;Jerry;Atraxa;Luky;Roon;Asyd;Omnath;;
+15.12.2017;4;Ollie;Safi-O;Rene;Scarab God;Malej Kuba;Selvala;Vinni;Sram;Ollie;Safi-O
+17.12.2017;4;Rene;Karlov;Rene;Karlov;Luky;Roon;Malej Kuba;Atraxa;Ollie;Aurelia
+17.12.2017;3;Malej Kuba;Urabrask;Rene;Karlov;Luky;Roon;Malej Kuba;Urabrask;;
+17.12.2017;3;Rene;Scarab God;Rene;Scarab God;Mira;Teferi;Mike;Marchesa;;
+17.12.2017;3;Mira;Teferi;Rene;Scarab God;Mira;Teferi;Mike;Marchesa;;
+17.12.2017;3;Rene;Karlov;Rene;Karlov;Mira;Mina and Denn;Mike;Marchesa;;
+17.12.2017;3;Mira;Teferi;Rene;Ulasht;Mira;Teferi;Mike;Kambal;;
+17.12.2017;3;Ollie;Gonti;Rene;Karlov;Luky;Crosis;Asyd;Sigarda;Ollie;Gonti
+18.12.2017;5;Chobot;Gaybros;Chobot;Gaybros;Vinni;Ramos;Rene;Karlov;Luky;Roon
+18.12.2017;5;Chobot;Gaybros;Chobot;Gaybros;Vinni;Ramos;Rene;Karlov;Luky;Roon
+18.12.2017;3;Asyd;Brago;Asyd;Brago;Vinni;Ramos;Ollie;Aurelia;;
+18.12.2017;4;Vinni;Grusilda;Vinni;Grusilda;Chobot;Ol´ Buzzbark;Asyd;X;Vojta;Jumblemorph
+18.12.2017;4;Luky;Crosis;Ollie;Aurelia;Luky;Crosis;Rene;Karlov;;
+18.12.2017;3;Luky;Niv Mizzet;Ollie;Gonti;Asyd;Gahiji;Luky;Niv Mizzet;;
+19.12.2017;4;Luky;Roon;Rene;Brion;Radek;Ephara;Chobot;Gaybros;Luky;Roon
+19.12.2017;3;Rene;Ulasht;Rene;Ulasht;Luky;Crosis;Radek;Shattergang Bros;;
+19.12.2017;3;Jerry;Atraxa;Ollie;Aurelia;Jerry;Atraxa;Martin;Bruse/Kraum;;
+19.12.2017;3;Martin;Bruse/Kraum;Ollie;Lovissa;Jerry;Hapatra;Martin;Bruse/Kraum;;
+19.12.2017;3;Ollie;Neheb;Ollie;Neheb;Jerry;Tresserhorn;Martin;Bruse/Kraum;;
+19.12.2017;3;Rene;Scarab God;Rene;Scarab God;Luky;Niv Mizzet;Radek;Shattergang Bros;;
+20.12.2017;3;Malej Kuba;Wanderer;Luky;Crosis;Malej Kuba;Wanderer;Radek;Ephara;;
+20.12.2027;3;Malej Kuba;Atraxa;Vinni;Ramos;Ollie;Aurelia;Malej Kuba;Atraxa;;
+20.12.2017;4;Malej Kuba;Geth;Vinni;Ramos;Malej Kuba;Geth;Rene;Olivia;Radek;Ephara
+20.12.2017;4;Vinni;Ramos;Vinni;Ramos;Asyd;Brion;Rene;Ulasht;Vojta;Jumblemorph
+20.12.2017;3;Vojta;X;Vinni;Ramos;Rene;Karlov;Vojta;X;;
+20.12.2017;3;Vojta;Grenzo;Vinni;Ramos;Radek;Ephara;Vojta;Grenzo;;
+20.12.2017;3;Vinni;Ramos;Vinni;Ramos;Malej Kuba;Yidris;Chobot;Gaybros;;
+20.12.2017;3;Luky;Niv Mizzet;Luky;Niv Mizzet;Malej Kuba;Polukranos;Radek;Ephara;;
+22.12.2017;3;Rene;Tymna/Bruse;Rene;Tymna/Bruse;Artex;Tymna Ravos;Luky;Roon;;
+22.12.2017;4;Luky;Roon;Rene;Tymna/Bruse;Luky;Roon;Robert;Lyzolda;Malej Kuba;Yidris
+27.12.2017;3;Vinni;Ramos;Rene;Tymna/Bruse;Chobot;Gaybros;Vinni;Ramos;;
+27.12.2017;4;Vinni;Mathas;Rene;Vhati;Chobot;Gaybros;Vinni;Mathas;Otto;Thelon
+27.12.2017;3;Asyd;Gahiji;Asyd;Gahiji;Luky;Crosis;Malej Kuba;Urabrask;;
+27.12.2017;4;Luky;Roon;Luky;Roon;Rene;Tymna/Bruse;Malej Kuba;Ojutai;Asyd;Brago
+30.12.2017;5;Rene;Nazahn;Robert;Riku;Ollie;Rakdos;Luky;Crosis;Peter;Tasigur
+30.12.2017;4;Ollie;Gonti;Robert;King Macar;Ollie;Gonti;Luky;Crosis;Peter;Nekusar
+30.12.2017;3;Robert;Riku;Robert;Riku;Rene;Tymna/Bruse;Peter;Tasigur;;
+30.12.2017;3;Ollie;Aurelia;Robert;Riku;Jerry;Atraxa;Ollie;Aurelia;;
+30.12.2017;3;Ollie;Rakdos;Robert;Riku;Jerry;Tresserhorn;Ollie;Rakdos;;
+2.1.2018;3;Vinni;Ramos;Chobot;Tymna/Kraum;Rene;Karlov;Vinni;Ramos;;
+2.1.2018;3;Vinni;Ramos;Chobot;Tymna/Kraum;Rene;Tymna/Bruse;Vinni;Ramos;;
+2.1.2018;3;Vinni;Ramos;Chobot;Tymna/Kraum;Rene;Ulasht;Vinni;Ramos;;
+2.1.2018;4;Vinni;Arahbo;Chobot;Tymna/Kraum;Rene;Tymna/Bruse;Ollie;Aurelia;Vinni;Ramos
+2.1.2018;3;Ollie;Safi-O;Vinni;Sram;Rene;Scarab God;Ollie;Safi-O;;
+2.1.2018;3;Ollie;Safi-O;Vinni;Sram;Rene;Scarab God;Ollie;Safi-O;;
+2.1.2018;3;Vinni;Sram;Vinni;Sram;Rene;Scarab God;Ollie;Gonti;;
+3.1.2018;5;Otto;Thelon;Otto;Thelon;Radek;Vorel;Vinni;Ramos;Ollie;Aurelia
+3.1.2018;4;Vinni;Ramos;Ollie;Aurelia;Malej Kuba;Urabrask;Vinni;Ramos;Jerry;Atraxa
+3.1.2018;4;Asyd;Omnath;Asyd;Omnath;Radek;Vorel;Otto;Glissa;Rene;Olivia
+3.1.2018;3;Ollie;Gonti;Ollie;Gonti;Rene;Azusa;Radek;Ephara;;
+3.1.2018;3;Rene;Azusa;Ollie;Neheb;Rene;Azusa;Radek;Ephara;;
+3.1.2018;3;Ollie;Neheb;Ollie;Neheb;Rene;Azusa;Radek;Ephara;;
+3.1.2018;3;Rene;Meren;Rene;Meren;Asyd;Zegana;Jerry;Atraxa;;
+5.1.2018;3;Chobot;Molimo;Chobot;Molimo;Robert;Obzedat;Peter;Safi-P;;
+5.1.2018;4;Chobot;Molimo;Chobot;Molimo;Asyd;Omnath;Luky;Niv Mizzet;Vojta;Progenitus
+5.1.2018;4;Vojta;Grenzo;Vojta;Grenzo;Asyd;Gahiji;Chobot;Tymna/Kraum;Luky;Crosis
+5.1.2018;4;Otto;Thelon;Ollie;Lovissa;Robert;Obzedat;Vojta;Jumblemorph;Otto;Thelon
+5.1.2018;4;Otto;Thelon;Robert;Riku;Ollie;Aurelia;Peter;Nekusar;Otto;Thelon
+5.1.2018;3;Malej Kuba;Atraxa;Rene;Nazahn;Luky;Crosis;Malej Kuba;Atraxa;;
+5.1.2018;3;Luky;Roon;Rene;Karlov;Malej Kuba;Obzedat;Luky;Roon;;
+5.1.2018;3;Luky;Niv Mizzet;Rene;Olivia;Malej Kuba;Polukranos;Luky;Niv Mizzet;;
+5.1.2018;5;Peter;Safi-P;Rene;Tymna/Bruse;Luky;Crosis;Peter;Safi-P;Chobot;Molimo
+5.1.2018;4;Ollie;Taigam;Ollie;Taigam;Rene;Nazahn;Robert;Riku;Peter;Nekusar
+6.1.2018;4;Rene;Ulasht;Luky;Roon;Rene;Ulasht;Luky;Hapatra;Malej Kuba;Daghatar
+6.1.2018;5;Luky;Crosis;Luky;Crosis;Rene;Karlov;Ollie;Aurelia;Jerry;Atraxa
+7.1.2018;4;Mira;Teferi;Mira;Teferi;Rene;Rota;Chobot;Molimo;Vinni;Ramos
+7.1.2018;4;Vinni;Ramos;Mira;Teferi;Rene;Olivia;Chobot;Molimo;Vinni;Ramos
+7.1.2018;4;Chobot;Molimo;Mira;Mina and Denn;Rene;Ulasht;Chobot;Molimo;Vinni;Arahbo
+7.1.2018;4;Mira;Mina and Denn;Mira;Mina and Denn;Rene;Azusa;Chobot;Molimo;Vinni;Ramos
+9.1.2018;4;Ollie;Taigam;Ollie;Taigam;Asyd;Aurelia;Jirka;Rakdos;Jerry;Mimeoplazma
+10.1.2018;3;Chobot;molimo;Vinni;Kingpin;Chobot;Molimo;Peter;Nekusar;;
+10.1.2018;5;Zefon;Brion;Vinni;Ramos;Zefon;Brion;Peter;Nekusar;Chobot;Molimo
+10.1.2018;5;Rene;Karlov;Vinni;Ramos;Zefon;Brion;Peter;Nekusar;Chobot;Molimo
+10.1.2018;5;Chobot;Molimo;Vinni;Ramos;Zefon;Brion;Peter;Nekusar;Chobot;Molimo
+10.1.2018;4;Vinni;Ramos;Vinni;Ramos;Malej Kuba;Atraxa;Jirka;Uril;Rene;Karlov
+10.1.2018;3;Jirka;Mathas;Vinni;Kingpin;Rene;Tymna/Bruse;Jirka;Mathas;;
+10.1.2018;3;Radek;Ephara;Chobot;Molimo;Zefon;Sigarda;;;;
+10.1.2018;4;Radek;Vorel;Ollie;Neheb;Chobot;Molimo;Jirka;Lovissa;;
+11.1.2018;3;Rene;Ulasht;Rene;Ulasht;Ollie;Aurelia;Jerry;Hapatra;;
+11.1.2018;3;Rene;Tymna/Bruse;Rene;Tymna/Bruse;Ollie;Taigam;Jerry;Atraxa;;
+12.1.2018;5;Rene;Karlov;Vojta;Jumblemorph;Rene;Karlov;Artex;Jeleva;Peter;Safi-P
+12.1.2018;5;Rene;Ulasht;Asyd;Sigarda;Artex;Jeleva;Rene;Ulasht;Vojta;Progenitus
+12.1.2018;4;Rene;Scarab God;Ollie;Gonti;Peter;Safi-P;Vojta;Progenitus;;
+12.1.2018;5;Ollie;Neheb;Ollie;Neheb;Peter;Safi-P;Vojta;Progenitus;Rene;Tymna/Bruse
+12.1.2018;4;Peter;Safi-P;Peter;Safi-P;Ollie;Uril;Rene;Ulasht;Vojta;Jumblemorph
+14.1.2018;3;Ollie;Uril;Ollie;Uril;Rene;Karlov;Martin;Kess;;
+14.1.2018;4;Ollie;Safi-O;Ollie;Safi-O;Rene;Meren;Malej Kuba;Zur;Martin B;Kess
+14.1.2018;3;Malej Kuba;Urabrask;Rene;Tymna/Bruse;Martin B;Kess;;;
+15.1.2018;3;Ollie;Aurelia;Ollie;Aurelia;Malej Kuba;Gitrog;Chobot;Tymna/Kraum;;
+15.1.2018;3;Chobot;Molimo;Chobot;Molimo;Ollie;Aurelia;Malej Kuba;Daghatar;;
+15.1.2018;4;Ollie;Neheb;Chobot;Molimo;Malej Kuba;Ojutai;Rene;Olivia;;
+15.1.2018;4;Chobot;Molimo;Ollie;Neheb;Malej Kuba;Ojutai;Rene;Olivia;;
+15.1.2018;4;Chobot;Molimo;Ollie;Gonti;Malej Kuba;Polukranos;Rene;Meren;;
+17.1.2018;3;Rene;Brion;Rene;Brion;Ollie;Rakdos;Radek;Vorel;;
+17.1.2018;3;Rene;Nazahn;Rene;Nazahn;Ollie;Rakdos;Radek;Vorel;;
+17.1.2018;3;Ollie;Gonti;Rene;Scarab God;Ollie;Gonti;Radek;Ephara;;
+17.1.2018;3;Rene;Karlov;Rene;Karlov;Ollie;Neheb;Radek;Vorel;;
+18.1.2018;4;Vinni;Mathas;Vinni;Mathas;Ollie;Aurelia;Zefon;Arahbo;Jirka;Rakdos
+20.1.2018;4;Malej Kuba;Urabrask;Peter;Nekusar;Malej Kuba;Urabrask;Chobot;Molimo;Petr Tejnský;Rashmi
+20.1.2018;4;Peter;Tasigur;Peter;Tasigur;Malej Kuba;Gitrog;Chobot;Selenia;Petr Tejnský;Neheb
+20.1.2018;4;Malej Kuba;Obzedat;Peter;Nekusar;Malej Kuba;Obzedat;Chobot;Selenia;Petr Tejnský;Admiral Beckett Brass
+20.1.2018;4;Ollie;Gonti;Ollie;Gonti;Rene;Scarab God;Otto;Thelon;Vojta;Jumblemorph
+20.1.2018;4;Vojta;Progenitus;Vojta;Progenitus;Otto;Thelon;Ollie;Aurelia;Rene;Karlov
+20.1.2018;4;Vojta;Progenitus;Vojta;Progenitus;Otto;Thelon;Ollie;Rakdos;Rene;Olivia
+21.1.2018;4;Ollie;Sharuum;Ollie;Sharuum;Vojta;Progenitus;Otto;Thelon;Rene;Azusa
+24.1.2018;3;Rene;Ulasht;Rene;Ulasht;Robert;Mimeoplazma;Jerry;Tresserhorn;;
+24.1.2018;3;Jerry;Ulrich;Jerry;Ulrich;Rene;Tymna/Bruse;Robert;Urabrask;;
+24.1.2018;3;Rene;Meren;Rene;Meren;Ollie;Gonti;Radek;Ephara;;
+24.1.2018;3;Rene;Meren;Rene;Meren;Ollie;Gonti;Radek;Ephara;;
+24.1.2018;3;Rene;Azusa;Rene;Azusa;Ollie;Gonti;Radek;Ephara;;
+25.1.2018;4;Otto;Thelon;Vojta;Progenitus;Rene;Karlov;Otto;Thelon;Mike;Marchesa
+25.1.2018;3;Otto;Thelon;Rene;Nazahn;Vojta;Progenitus;Otto;Thelon;;
+26.1.2018;3;Rene;Ulasht;Rene;Ulasht;Malej Kuba;Geth;Artex;Tymna Ravos;;
+26.1.2018;5;Rene;Karlov;Rene;Karlov;Malej Kuba;Yidris;Adam;Alesha;Artex;Inalla
+26.1.2018;4;Rene;Rota;Rene;Rota;Asyd;Gishath;Vinni;Mathas;Luky;Crosis
+26.1.2018;4;Luky;Niv Mizzet;Luky;Niv Mizzet;Rene;Meren;Adam;Hannah;Malej Kuba;Atraxa
+26.1.2018;5;Ollie;Taigam;Vinni;Ramos;Ollie;Taigam;Asyd;Gishath;Jerry;Atraxa
+26.1.2018;3;Rene;Ulasht;Rene;Ulasht;Jirka;Karlov;Adam;Yasova;;
+28.1.2018;4;Vojta;Progenitus;Vojta;Progenitus;Rene;Tymna/Bruse;Otto;Thelon;Martin B;Kess
+28.1.2018;4;Vojta;Jumblemorph;Vojta;Jumblemorph;Rene;Tymna/Bruse;Otto;Thelon;Martin B;Kess
+29.1.2018;3;Rene;Nazahn;Rene;Nazahn;Vojta;Jumblemorph;Luky;Crosis;;
+29.1.2018;3;Vojta;Progenitus;Rene;Azusa;Vojta;Progenitus;Luky;Roon;;
+29.1.2018;5;Rene;Scarab God;Rene;Scarab God;Vojta;Progenitus;Luky;Niv Mizzet;Ollie;Gonti
+29.1.2018;5;Ollie;Gonti;Ollie;Gonti;Vojta;Grenzo;Rene;Scarab God;Martin B;Kess
+29.1.2018;4;Rene;Tymna/Bruse;Rene;Tymna/Bruse;Vojta;Jumblemorph;Luky;Roon;Ollie;Aurelia
+29.1.2018;4;Vojta;Progenitus;Vojta;Progenitus;Rene;Scarab God;Ollie;Gonti;Luky;Roon
+30.1.2018;3;Vojta;Breya-Precon;Vojta;Breya-Precon;Chobot;Selenia;Jerry;Grusilda;;
+30.1.2018;3;Chobot;Selenia;Chobot;Selenia;Vojta;Grusilda;Jerry;Ana-Pauper;;
+30.1.2018;3;Vojta;Grusilda;Vojta;Grusilda;Chobot;Selenia;Jerry;Ana-Pauper;;
+1.2.2018;3;Vojta;Progenitus;Vojta;Progenitus;Rene;Azusa;Vinni;Ramos;;
+1.2.2018;3;Rene;Azusa;Vojta;Progenitus;Rene;Azusa;Vinni;Ramos;;
+1.2.2018;3;Rene;Meren;Vojta;Grenzo;Vinni;Sram;Rene;Meren;;
+2.2.2018;4;Malej Kuba;Urabrask;Malej Kuba;Urabrask;Peter;Nekusar;Luky;Roon;Radek;Lazav
+2.2.2018;3;Peter;Nekusar;Malej Kuba;Zur;Peter;Nekusar;Radek;Ephara;;
+2.2.2018;3;Peter;Safi-P;Malej Kuba;Child of Alara;Peter;Safi-P;Radek;Ephara;;
+2.2.2018;4;Asyd;Zedruu;Vinni;Mathas;Otto;Thelon;Ollie;Gisa and Geralf;Asyd;Zedruu
+2.2.2018;4;Asyd;Gishath;Otto;Thelon;Asyd;Gishath;Radek;Lazav;Peter;Tasigur
+2.2.2018;3;Ollie;Neheb;Rene;Azusa;Vinni;Ramos;Ollie;Neheb;;
+5.2.2018;4;Rene;Karlov;Rene;Karlov;Ollie;Aurelia;Malej Kuba;Obzedat;Jirka;Rakdos
+3.2.2018;5;Rene;Olivia;Rene;Olivia;Jerry;Hapatra;Ollie;Neheb;Asyd;Gahiji
+5.2.2018;3;Malej Kuba;Polukranos;Malej Kuba;Polukranos;Ollie;Scorpy;Vinni;Etali;;
+16.2.2018;4;Rene;Karlov;Rene;Karlov;Malej Kuba;Tana;Jerry;Smasher/Thrassios;Luky;Crosis
+16.2.2018;3;Honza;Wanderer;Honza;Wanderer;Rene;Tymna/Bruse;Luky;Crosis;;
+16.2.2018;4;Rene;Scarab God;Rene;Scarab God;Honza;Jeleva;Luky;Niv Mizzet;Malej Kuba;Tana
+16.2.2018;4;Malej Kuba;Daretti;Rene;Karlov;Malej Kuba;Daretti;Luky;Niv Mizzet;Honza;Urabrask
+23.2.2018;4;Robert;Robodeck;Robert;Robodeck;Rene;Sidisi;Luky;Roon;Peter;Phenax
+23.2.2018;4;Rene;Sidisi;Robert;Robodeck;Rene;Sidisi;Luky;Roon;Peter;Phenax
+2.3.2018;4;Otto;Thelon;Otto;Thelon;Asyd;Gishath;Ollie;Gisa and Geralf;Jerry;Ulrich
+2.3.2018;3;Rene;Tymna/Bruse;Rene;Tymna/Bruse;Luky;Roon;Artex;Inalla;;
+2.3.2018;3;Rene;Sidisi;Rene;Sidisi;Luky;Crosis;Artex;Inalla;;
+2.3.2018;4;Otto;Thelon;Otto;Thelon;Rene;Sidisi;Luky;Roon;Martin B;Kess
+2.3.2018;4;Martin B;Kess;Otto;Thrinax;Rene;Ulasht;Martin B;Kess;Luky;Crosis
+2.3.2018;3;Rene;Meren;Rene;Meren;Luky;Niv Mizzet;Martin B;Kess;;
+2.3.2018;4;Rene;Azusa;Rene;Azusa;Martin B;Kess;Luky;Niv Mizzet;Otto;Thelon
+2.3.2018;3;Martin B;Kess;Martin B;Kess;Rene;Olivia;Luky;Roon;;
+2.3.2018;3;Rene;Sidisi;Rene;Sidisi;Ollie;Rakdos;Luky;Crosis;;
+4.3.2018;4;Rene;Scarab God;Rene;Scarab God;Asyd;Zegana;Jerry;Atraxa;Vinni;Neheb the Worthy
+4.3.2018;4;Asyd;Gishath;Rene;Sidisi;Asyd;Gishath;Otto;Thelon;Vojta;Grenzo
+4.3.2018;3;Rene;Olivia;Otto;Thelon;Asyd;Gahiji;Rene;Olivia;;
+4.3.2018;3;Rene;Olivia;Rene;Olivia;Asyd;Scorpy;Ollie;Rakdos;;
+4.3.2018;3;Rene;Olivia;Rene;Olivia;Asyd;Scorpy;Ollie;Rakdos;;
+9.3.2018;4;Chobot;Molimo;Chobot;Molimo;Vinni;Neheb the Worthy;Vojta;Progenitus;Dan;Noyan Dar
+9.3.2018;4;Dan;Gisa a Geralf Dan;Dan;Gisa a Geralf Dan;Vinni;Neheb the Worthy;Chobot;Molimo;Vojta;Progenitus
+9.3.2018;4;Dan;Gisa a Geralf Dan;Dan;Gisa a Geralf Dan;Vinni;Neheb the Worthy;Chobot;Molimo;Vojta;Progenitus
+9.3.2018;4;Vojta;Progenitus;Vojta;Progenitus;Dan;Locust God;Chobot;Jhoira durdle;Vinni;Ramos
+9.3.2018;4;Dan;Locust God;Dan ;Locust God;Chobot;Jhoira durdle;Vinni;Ramos;Vojta;Progenitus
+9.3.2018;3;Malej Kuba;Tana;Malej Kuba;Tana;Ollie;Gisa and Geralf;Petr Knows;Ezuri;;
+9.3.2018;4;Malej Kuba;Geth;Malej Kuba;Geth;Robert;Wrexial;Rene;Ulasht;Luky;Crosis
+9.3.2018;4;Rene;Ulasht;Malej Kuba;Memnarch;Robert;Wrexial;Rene;Ulasht;Luky;Niv Mizzet

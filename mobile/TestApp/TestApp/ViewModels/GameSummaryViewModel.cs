@@ -7,6 +7,7 @@ using GayTimer.Services;
 using Xamarin.Forms;
 using XF.Material.Forms.UI;
 using XF.Material.Forms.UI.Dialogs;
+using XF.Material.Forms.UI.Dialogs.Configurations;
 
 namespace GayTimer.ViewModels
 {

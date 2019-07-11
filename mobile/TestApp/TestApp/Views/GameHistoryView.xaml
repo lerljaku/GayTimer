@@ -14,6 +14,12 @@
         <ListView HasUnevenRows="True"
                   ItemsSource="{Binding Games}"
                   SelectionMode="None">
+            <ListView.Header>
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <ui:MaterialButton Command="{Binding SelectPlayerCommand}" Text="{Binding SelectedPlayerNick}" />
+                    <ui:MaterialIconButton Command="{Binding ClearPlayerCommand}" IsVisible="{Binding CanClear}" Image="outline_clear_white_24" />
+                </StackLayout>
+            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Command="{Binding Path=BindingContext.GameDetailCommand, Source={x:Reference Grid}}"
