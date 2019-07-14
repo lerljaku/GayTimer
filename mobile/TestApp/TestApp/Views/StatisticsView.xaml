@@ -26,14 +26,19 @@
             <ui:MaterialIconButton Command="{Binding ClearFilterCommand}" Image="outline_clear_white_24" />
         </StackLayout>
 
-        <dataGrid:DataGrid Grid.Row="1" IsRefreshing="{Binding IsBusy}"
+        <dataGrid:DataGrid Grid.Row="1"
                            BorderColor="#CCCCCC"
                            HeaderBackground="#E0E6F8"
                            HeaderHeight="32"
+                           IsRefreshing="{Binding IsBusy}"
                            ItemsSource="{Binding Ratings}"
                            SelectionEnabled="False">
+            <x:Arguments>
+                <!--  Recycle element je sice brutalne rychlejsi, zato zas blbe sizuje prvky  -->
+                <ListViewCachingStrategy>RetainElement</ListViewCachingStrategy>
+            </x:Arguments>
             <dataGrid:DataGrid.Columns>
-                <dataGrid:DataGridColumn Title="Gay" PropertyName="PlayerName" />
+                <dataGrid:DataGridColumn Title="Player" PropertyName="PlayerName" />
                 <dataGrid:DataGridColumn Title="Deck" PropertyName="DeckName" />
                 <dataGrid:DataGridColumn Title="Games"
                                          Width="0.7*"

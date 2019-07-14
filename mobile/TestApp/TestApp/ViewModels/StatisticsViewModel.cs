@@ -86,7 +86,6 @@ namespace GayTimer.ViewModels
                 m_selectedPlayer = value;
                 NotifyPropertyChanged();
                 FilterChanged();
-                SimpleStorage.Save(nameof(SelectedPlayer), m_selectedPlayer?.Id.ToString());
             }
         }
 
@@ -118,12 +117,6 @@ namespace GayTimer.ViewModels
             Players = await m_dataService.SelectPlayers();
             m_allGames = await m_dataService.SelectGames();
             m_decks = await m_dataService.SelectDecks();
-
-            if (int.TryParse(SimpleStorage.Get(nameof(SelectedPlayer)), out var playerId))
-            {
-                m_selectedPlayer = Players.FirstOrDefault(d => d.Id == playerId);
-                NotifyPropertyChanged(nameof(SelectedPlayer));
-            }
 
             FilterChanged();
 
@@ -179,7 +172,7 @@ namespace GayTimer.ViewModels
                 }
             }
 
-            Ratings = ratings.Values.ToList();
+            Ratings = ratings.Values.OrderByDescending(d => d.GamesCount).ToList();
 
             NotifyPropertyChanged(nameof(TotalGamesCount));
         }
